@@ -23,7 +23,7 @@
     <!-- Custom Style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <style>
         .main__header {
             background-color: rgb(235, 178, 94);

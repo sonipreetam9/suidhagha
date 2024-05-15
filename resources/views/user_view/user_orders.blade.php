@@ -63,8 +63,8 @@
                                 <br>
                                 @if ($order->order_status != 'cancelled' && $order->order_status !=
                                 'delivered')
-                                <button type="button" class="button bg-danger text-white" data-bs-toggle="modal"
-                                    data-bs-target="#myModal{{$order->id }}">Cancel</button>
+                                <button type="button" class="button bg-danger text-white" data-bs-toggle="myModal"
+                                    data-bs-target="#myModal">Cancel</button>
                                 @endif
                             </div>
 
@@ -124,8 +124,8 @@
                                     <br>
                                     @if ($order->order_status != 'cancelled' && $order->order_status !=
                                     'delivered')
-                                    <button type="button" class="buttonmob bg-danger text-white" data-bs-toggle="modal"
-                                        data-bs-target="#myModal{{ $order->id }}">Cancel</button>
+                                    <button type="button" class="buttonmob bg-danger text-white"
+                                        data-bs-toggle="myModal" data-bs-target="#myModal">Cancel</button>
                                     @endif
                                 </div>
                             </span>
@@ -202,7 +202,6 @@
 
 
 
-
 <script>
     // JavaScript code to show/hide textarea based on checkbox state
     document.getElementById('check{{$order->id}}').addEventListener('change', function() {
@@ -222,6 +221,8 @@
     });
 
 </script>
+
+
 @endforeach
 
 
