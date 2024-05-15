@@ -15,9 +15,9 @@
 </head>
 
 @if (session('error'))
-    <script>
-        alert('{{ session('error') }}')
-    </script>
+<script>
+    alert('{{ session('error') }}')
+</script>
 @endif
 <div class="auth-wrapper">
     <div class="auth-content">
@@ -25,7 +25,8 @@
             <div class="row align-items-center text-center">
                 <div class="col-md-12">
                     <div class="card-body">
-                        <img src="{{ asset('img/logo/ecomlogo.png') }}" class="img-fluid mb-4" style="width: 100px;">
+                        <img src="{{ asset('assets/img/logo/sui-dhagha-high-resolution-logo-color-on-transparent-background (1).png') }}"
+                            class="img-fluid mb-4" style="width: 100px;">
                         <h4 class="mb-3 f-w-400">Signin</h4>
                         <form action="{{ route('adm.login') }}" method="POST">
                             @csrf
@@ -44,7 +45,8 @@
                                     <label for="checkbox-fill-a1" class="cr">Save credentials</label>
                                 </div>
                             </div>
-                            <button type="submit" name="login" class="btn btn-block btn-primary mt-2 mb-4">Signin</button>
+                            <button type="submit" name="login"
+                                class="btn btn-block btn-primary mt-2 mb-4">Signin</button>
                         </form>
                     </div>
                 </div>
