@@ -594,7 +594,6 @@
         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48"
             d="M112 244l144-144 144 144M256 120v292" />
     </svg></button>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- All Script JS Plugins here  -->
 <script src="{{ asset('assets/js/vendor/popper.js') }}" defer="defer"></script>
