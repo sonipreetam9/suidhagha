@@ -9882,9 +9882,7 @@ details > summary::-webkit-details-marker {
 .account__menu--list:hover {
     color: var(--secondary-color);
 }
-.account__menu--list.active {
-    color: var(--secondary-color);
-}
+
 @media only screen and (min-width: 992px) {
     .account__menu--list {
         font-size: 1.6rem;

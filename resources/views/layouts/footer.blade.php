@@ -17,7 +17,8 @@
                         @foreach ($categories as $categorie )
 
                         <li class="footer__widget--menu__list text-black"><a class="footer__widget--menu__text"
-                                href="{{ route('shop.page.find.categorie',['catName'=> $categorie->name ]) }}">{{ $categorie->name }}</a></li>
+                                href="{{ route('shop.page.find.categorie',['catName'=> $categorie->name ]) }}">{{
+                                $categorie->name }}</a></li>
                         @endforeach
 
 
@@ -39,7 +40,8 @@
                         </button>
                     </h2>
                     <ul class="footer__widget--menu footer__widget--inner">
-                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="#">My
+                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
+                                href="{{ route('user.dashboard') }}">My
                                 Account</a></li>
                         <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
                                 href="{{ route('cart.page') }}">Shopping Cart</a></li>

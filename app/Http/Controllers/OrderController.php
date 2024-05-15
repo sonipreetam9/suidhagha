@@ -33,7 +33,7 @@ class OrderController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
         $reasons = ReasonModel::all();
-        return view('orders', compact('orders', 'reasons'));
+        return view('myorders', compact('orders', 'reasons'));
     }
 
 
