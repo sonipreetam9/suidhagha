@@ -85,8 +85,8 @@ scrollTop &&
         slidesPerView: 1,
         loop: true,
         clickable: true,
-        speed: 6000,
-        spaceBetween: 30,
+        speed: 3000,
+        spaceBetween: 20,
         autoplay: { delay: 6000, disableOnInteraction: false },
         navigation: {
             nextEl: ".swiper-button-next",
