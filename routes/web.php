@@ -21,18 +21,6 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\WithoutLoginCartController;
-
-
-
-
-
-
-
-
-
-
-
-
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
