@@ -95,14 +95,17 @@ class ProductController extends Controller
         $product->discounted_price = $request->discounted_price;
         $product->about1 = $request->about1;
         $product->save();
-        $new = $request->size;
-        $length = count($new);
-        $product_id = $product->id;
-        for($i=0;$i<$length;$i++){
-            ProductSizeModel::create([
-                'value'=>$new[$i],
-                'product_id'=>$product_id,
-            ]);}
+        if($request->size){
+            $new = $request->size;
+            $length = count($new);
+            $product_id = $product->id;
+            for($i=0;$i<$length;$i++){
+                ProductSizeModel::create([
+                    'value'=>$new[$i],
+                    'product_id'=>$product_id,
+                ]);}
+        }
+
         return redirect()->back()->with('success', 'Product Added successfully.');
     }
 
@@ -113,11 +116,99 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Product Deleted successfully.');
     }
     public function update_product($id){
+        $sizes=ProductSizeModel::where('product_id', $id)->get();
+        // dd($sizes);
+        if($sizes->count() < 0){
+            $sizes=null;
+        }
         $categories = CategorieModel::orderBy("id", "desc")->get();
         $brands = BrandModel::orderBy("id", "desc")->get();
         $product=ProductModel::findOrFail($id);
         $brandName=BrandModel::where('id',$product->brand_id)->first();
         $categorieName=CategorieModel::where('id', $product->category_id)->first();
-        return view('admin.update_product', compact('product','categories','brands','brandName','categorieName'));
+        return view('admin.update_product', compact('product','categories','brands','brandName','categorieName','sizes'));
     }
+    public function update_product_post(Request $request, $id){
+        $validator = Validator::make($request->all(), [
+            'product_name' => 'required',
+            'price' => 'required|numeric',
+            'category_id' => 'required',
+            'brand_id' => 'required',
+            'product_image' => 'file|mimes:jpeg,png,jpg,webp',
+            'product_image_2' => 'file|mimes:jpeg,png,jpg,webp',
+            'product_image_3' => 'file|mimes:jpeg,png,jpg,webp',
+            'product_image_4' => 'file|mimes:jpeg,png,jpg,webp',
+            'product_image_5' => 'file|mimes:jpeg,png,jpg,webp',
+            'color' => 'required',
+            'about1' => 'required',
+            'discounted_price' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $targetDirectory = 'uploads/Products Images/';
+        $product = ProductModel::findOrFail($id);
+
+        // Handle product_image separately
+        if ($request->hasFile('product_image')) {
+            $productImage = $request->file('product_image');
+            $productImageName = $productImage->getClientOriginalName();
+
+            // Unlink existing image if exists
+            if (file_exists(public_path($targetDirectory . $product->image))) {
+                unlink(public_path($targetDirectory . $product->image));
+            }
+
+            $productImage->move(public_path($targetDirectory), $productImageName);
+            $product->image = $productImageName;
+        }
+
+        // Handle additional product images if provided
+        $additionalImages = [];
+        for ($i = 2; $i <= 5; $i++) {
+            $fileInputName = 'product_image_' . $i;
+
+            if ($request->hasFile($fileInputName)) {
+                $additionalImage = $request->file($fileInputName);
+                $additionalImageName = $additionalImage->getClientOriginalName();
+
+                // Unlink existing image if exists
+                $imageField = 'image' . $i;
+                if (file_exists(public_path($targetDirectory . $product->$imageField))) {
+                    unlink(public_path($targetDirectory . $product->$imageField));
+                }
+
+                $additionalImage->move(public_path($targetDirectory), $additionalImageName);
+                $product->$imageField = $additionalImageName;
+            }
+        }
+
+        // Update the product record
+        $product->name = $request->product_name;
+        $product->brand_id = $request->brand_id;
+        $product->category_id = $request->category_id;
+        $product->colors = $request->color;
+        $product->price = $request->price;
+        $product->discounted_price = $request->discounted_price;
+        $product->about1 = $request->about1;
+        $product->save();
+
+        // Update product sizes
+        if ($request->size) {
+            $newSizes = $request->size;
+            $product->sizes()->delete(); // Delete existing sizes
+
+            foreach ($newSizes as $sizeValue) {
+                ProductSizeModel::create([
+                    'value' => $sizeValue,
+                    'product_id' => $product->id,
+                ]);
+            }
+        }
+
+        return redirect()->back()->with('success', 'Product updated successfully.');
+    }
+
 }

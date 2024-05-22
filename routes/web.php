@@ -11,6 +11,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyDetailsController;
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\FilterController;
 use App\Http\Controllers\FooterPageController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\OffersController;
@@ -63,6 +64,19 @@ Route::get('/returns-and-refunds', [FooterPageController::class, 'returns_refund
 Route::get('/shipping-policy', [FooterPageController::class, 'shipping_policy_page'])->name('shipping.policy.page');
 Route::get('/admin', [AdminControler::class, 'login_page'])->name('adm.login.page');
 Route::post('/admin/login', [AdminControler::class, 'login'])->name('adm.login');
+
+
+
+
+
+Route::post('/filter/products', [FilterController::class, 'filtering_products'])->name('product.filter.post');
+
+
+
+
+
+
+
 Route::group(
     ['middleware' => 'guest'],
     function () {
@@ -155,6 +169,11 @@ Route::middleware(['admin'])->group(function () {
     Route::post('admin/update-company-detail', [CompanyDetailsController::class, 'update_company_detail'])->name('adm.update.company.details');
     Route::get('/admin/redirect/page', [AdminControler::class, 'redirect_page'])->name('redirect.page');
     Route::get('/admin/our-clients-say', [ClientController::class, 'clients_page'])->name('adm.clients.page');
+    Route::get('/admin/update-our-clients-say/{id}', [ClientController::class, 'update_client_reiview_page'])->name('adm.update.client.review');
+    Route::post('/admin/update-our-clients-say/{id}', [ClientController::class, 'update_client_reiview'])->name('adm.update.client.review.post');
+    Route::post('/admin/delete-clients-review/{id}', [ClientController::class, 'adm_client_delete_review'])->name('adm.del.client.review');
     Route::post('/admin/add-clients-review', [ClientController::class, 'add_clients_reivew'])->name('adm.add.client.review');
     Route::get('/admin/update-product/{id}', [ProductController::class, 'update_product'])->name('adm.update.product');
+    Route::post('/admin/update-product/{id}', [ProductController::class, 'update_product_post'])->name('adm.update.product.post');
+
 });

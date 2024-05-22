@@ -97,7 +97,7 @@ $i=0;
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>List of Sections</h5>
+                                        <h5>List of Blogs</h5>
                                     </div>
                                     <div class="card-block table-border-style">
                                         <div class="table-responsive">

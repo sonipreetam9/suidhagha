@@ -163,7 +163,7 @@
                                                     <p class="text-danger">{{ $errors->first('discounted_price') }}</p>
                                                     @endif
                                                 </div>
-                                                <div class="col-md-5 m-2 p-2 border border-success d-flex justify-content-around align-items-center text-center">Size Available
+                                                <div class="col-md-5 m-2 p-2 border  d-flex justify-content-around align-items-center text-center">Size Available
                                                     @php
                                                     $j = 38;
                                                     @endphp

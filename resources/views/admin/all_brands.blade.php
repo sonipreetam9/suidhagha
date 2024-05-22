@@ -10,11 +10,11 @@
                         <div class="row align-items-center">
                             <div class="col-md-12">
                                 <div class="page-header-title">
-                                    <h5 class="m-b-10">Camera Brands</h5>
+                                    <h5 class="m-b-10"> Brands</h5>
                                 </div>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home /</a></li>
-                                    <li class="breadcrumb-item"><a href="{{ route('adm.all.brands.page') }}">Camera
+                                    <li class="breadcrumb-item"><a href="#">
                                             Brands</a></li>
                                 </ul>
                             </div>
@@ -29,7 +29,7 @@
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>Add Camera Brand</h5>
+                                        <h5>Add  Brand</h5>
                                     </div>
                                     <div class="card-block table-border-style">
 
@@ -103,7 +103,7 @@
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>List of Camera Brands</h5>
+                                        <h5>List of  Brands</h5>
                                     </div>
                                     <div class="card-block table-border-style">
                                         <div class="table-responsive">

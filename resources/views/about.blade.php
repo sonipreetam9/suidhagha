@@ -393,7 +393,7 @@
 
     <!-- Start testimonial section -->
     @if($reviews->isEmpty())
-    
+
     @else
     <section class="testimonial__section bg__gray--color section--padding">
         <div class="container-fluid">
@@ -411,7 +411,7 @@
                         <div class="testimonial__items text-center">
                             <div class="testimonial__items--thumbnail">
                                 <img class="testimonial__items--thumbnail__img border-radius-50"
-                                    src="assets/img/other/testimonial-thumb1.png" alt="testimonial-img">
+                                    src="{{ asset('uploads/Client Images/'.$review->image) }}" alt="testimonial-img"  style="border-radius: 50%;height:70px;width:70px;">
                             </div>
                             <div class="testimonial__items--content">
                                 <h3 class="testimonial__items--title">{{ $review->name }}</h3>

@@ -21,7 +21,7 @@
     </section>
     <!-- End breadcrumb section -->
 
-    <!-- Start shop section -->
+    <!-- Start Our Productssection -->
     <section class="shop__section section--padding">
         <div class="container-fluid">
             <div class="shop__header bg__gray--color d-flex align-items-center justify-content-between mb-30">
@@ -104,7 +104,7 @@
                                         <span class="price__filter--currency">₹</span>
                                         <label>
                                             <input class="price__filter--input__field border-0"
-                                                name="filter.v.price.lte" type="number" min="0" placeholder="10000.00"
+                                                name="filter.v.price.lte" type="number" min="1" placeholder="20000.00"
                                                 max="20000.00" value="20000">
                                         </label>
                                     </div>
@@ -340,7 +340,7 @@
             </div>
         </div>
     </section>
-    <!-- End shop section -->
+    <!-- End Our Productssection -->
 
     <!-- Start shipping section -->
     <section class="shipping__section2 shipping__style3 section--padding pt-0">
