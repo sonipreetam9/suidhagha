@@ -6,13 +6,15 @@ use App\Models\ProductModel;
 use Illuminate\Http\Request;
 use App\Models\BrandModel;
 use App\Models\CategorieModel;
+use App\Models\ProductSizeModel;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
     public function product_detail_page($id){
         $product=ProductModel::findOrFail($id);
-        return view('product-details',compact('product'));
+        $sizes=$product->sizes;
+        return view('product-details',compact('product','sizes'));
     }
 
 
@@ -38,7 +40,6 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'product_name' => 'required',
-            'model' => 'required',
             'price' => 'required|numeric',
             'category_id' => 'required',
             'brand_id' => 'required',
@@ -49,13 +50,7 @@ class ProductController extends Controller
             'product_image_5' => 'file|mimes:jpeg,png,jpg,webp',
             'color' => 'required',
             'about1' => 'required',
-            'about2' => 'required',
-            'year' => 'required|numeric',
-            'warranty' => 'required|numeric',
             'discounted_price' => 'required|numeric',
-            'sold_count' => 'required|numeric',
-            'available_products' => 'required|numeric',
-            'delivery_charges' => 'required|numeric'
         ]);
 
 
@@ -86,10 +81,10 @@ class ProductController extends Controller
         // Create the product record
         $product = new ProductModel();
         $product->name = $request->product_name;
-        $product->abbr = "notuhgm";
+
         $product->brand_id = $request->brand_id;
         $product->category_id = $request->category_id;
-        $product->model = $request->model;
+
         $product->colors = $request->color;
         $product->image = $productImageName;
         $product->image2 = isset($additionalImages[0]) ? $additionalImages[0] : null;
@@ -99,14 +94,15 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->discounted_price = $request->discounted_price;
         $product->about1 = $request->about1;
-        $product->about2 = $request->about2;
-        $product->warranty = $request->warranty;
-        $product->year = $request->year;
-        $product->available_products = $request->available_products;
-        $product->sold_count = $request->sold_count;
-        $product->delivery_charges = $request->delivery_charges;
         $product->save();
-
+        $new = $request->size;
+        $length = count($new);
+        $product_id = $product->id;
+        for($i=0;$i<$length;$i++){
+            ProductSizeModel::create([
+                'value'=>$new[$i],
+                'product_id'=>$product_id,
+            ]);}
         return redirect()->back()->with('success', 'Product Added successfully.');
     }
 
@@ -115,5 +111,13 @@ class ProductController extends Controller
     {
         ProductModel::find($id)->delete();
         return redirect()->back()->with('success', 'Product Deleted successfully.');
+    }
+    public function update_product($id){
+        $categories = CategorieModel::orderBy("id", "desc")->get();
+        $brands = BrandModel::orderBy("id", "desc")->get();
+        $product=ProductModel::findOrFail($id);
+        $brandName=BrandModel::where('id',$product->brand_id)->first();
+        $categorieName=CategorieModel::where('id', $product->category_id)->first();
+        return view('admin.update_product', compact('product','categories','brands','brandName','categorieName'));
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyDetailsController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\FooterPageController;
@@ -153,4 +154,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('admin/update-company-detail', [CompanyDetailsController::class, 'update_detail_page'])->name('adm.company.detail.page');
     Route::post('admin/update-company-detail', [CompanyDetailsController::class, 'update_company_detail'])->name('adm.update.company.details');
     Route::get('/admin/redirect/page', [AdminControler::class, 'redirect_page'])->name('redirect.page');
+    Route::get('/admin/our-clients-say', [ClientController::class, 'clients_page'])->name('adm.clients.page');
+    Route::post('/admin/add-clients-review', [ClientController::class, 'add_clients_reivew'])->name('adm.add.client.review');
+    Route::get('/admin/update-product/{id}', [ProductController::class, 'update_product'])->name('adm.update.product');
 });

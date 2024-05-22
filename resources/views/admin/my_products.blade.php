@@ -72,7 +72,7 @@
                                                         @else
                                                             N/A
                                                         @endif
-                                                           
+
                                                         </td>
                                                         <td>
                                                             {{ $key->name }}
@@ -87,6 +87,8 @@
                                                             <div><label class="badge bg-success">Active</label></div>
                                                         </td>
                                                         <td>
+                                                            <a href="{{ route('adm.update.product',['id'=>$key->id]) }}" class="btn btn-sm btn-primary"
+                                                                >Update</a>
                                                             <form method="post"
                                                                 action="{{ route('adm.del.product', ['id' => $key->id]) }}"
                                                                 onsubmit="return confirm('Are you sure you want to delete this Product?')">

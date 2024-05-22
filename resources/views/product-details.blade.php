@@ -140,38 +140,65 @@
                             </div>
 
                             <p class="product__details--info__desc mb-15">{{ $product->about1 }}</p>
-                            <p class="product__details--info__desc mb-15">{{ $product->about2 }}</p>
                             <div class="product__variant">
                                 {{-- <div class="product__variant--list mb-10">
                                     <fieldset class="variant__input--fieldset">
                                         <legend class="product__variant--title mb-8">Color :</legend>
                                         <input id="color-red1" name="color" type="radio" checked>
                                         <label class="variant__color--value red" for="color-red1" title="Red"><img
-                                                class="variant__color--value__img" src="{{ asset('uploads/Products Images/'.$product->image2) }}"
+                                                class="variant__color--value__img"
+                                                src="{{ asset('uploads/Products Images/'.$product->image2) }}"
                                                 alt="variant-color-img"></label>
                                         <input id="color-red2" name="color" type="radio">
                                         <label class="variant__color--value red" for="color-red2" title="Black"><img
-                                                class="variant__color--value__img" src="{{ asset('uploads/Products Images/'.$product->image3) }}"
+                                                class="variant__color--value__img"
+                                                src="{{ asset('uploads/Products Images/'.$product->image3) }}"
                                                 alt="variant-color-img"></label>
                                         <input id="color-red3" name="color" type="radio">
                                         <label class="variant__color--value red" for="color-red3" title="Pink"><img
-                                                class="variant__color--value__img" src="{{ asset('uploads/Products Images/'.$product->image4) }}"
+                                                class="variant__color--value__img"
+                                                src="{{ asset('uploads/Products Images/'.$product->image4) }}"
                                                 alt="variant-color-img"></label>
                                         <input id="color-red4" name="color" type="radio">
                                         <label class="variant__color--value red" for="color-red4" title="Orange"><img
-                                                class="variant__color--value__img" src="{{ asset('uploads/Products Images/'.$product->image5) }}"
+                                                class="variant__color--value__img"
+                                                src="{{ asset('uploads/Products Images/'.$product->image5) }}"
                                                 alt="variant-color-img"></label>
                                     </fieldset>
                                 </div> --}}
+                                <style>
+                                    .variant__size--value.red.cross {
+                                        color: red;
+                                        text-decoration: underline line-through;
+                                        position: relative;
+                                    }
+
+                                    .variant__size--value.red.cross::after {
+                                        content: '✖';
+                                        position: absolute;
+                                        right: 16px;
+                                        color: red;
+                                    }
+                                </style>
+
+
                                 <div class="product__variant--list mb-15">
                                     <fieldset class="variant__input--fieldset weight">
-                                        <legend class="product__variant--title mb-8">Weight :</legend>
-                                        <input id="weight1" name="weight" type="radio" checked>
-                                        <label class="variant__size--value red" for="weight1">5 kg</label>
-                                        <input id="weight2" name="weight" type="radio">
-                                        <label class="variant__size--value red" for="weight2">3 kg</label>
-                                        <input id="weight3" name="weight" type="radio">
-                                        <label class="variant__size--value red" for="weight3">2 kg</label>
+                                        <legend class="product__variant--title mb-8">Available in Size :</legend>
+
+                                        @foreach ($sizes as $size)
+
+                                         <input id="size{{ $size->id }}" name="size" type="radio"
+                                            >
+                                            <label class="variant__size--value red"
+                                                for="size{{ $size->id }}">
+                                                {{ $size->value }}
+                                            </label>
+
+                                            @endforeach
+
+
+
                                     </fieldset>
                                 </div>
                                 <div class="product__variant--list quantity d-flex align-items-center mb-20">
@@ -190,20 +217,7 @@
                                     <button class="quickview__cart--btn primary__btn" type="submit">Add To Cart</button>
                                 </div>
 
-                                <div class="product__details--info__meta">
-                                    <p class="product__details--info__meta--list"><strong>Barcode:</strong>
-                                        <span>565461</span>
-                                    </p>
-                                    <p class="product__details--info__meta--list"><strong>Sky:</strong>
-                                        <span>4420</span>
-                                    </p>
-                                    <p class="product__details--info__meta--list"><strong>Vendor:</strong>
-                                        <span>Belo</span>
-                                    </p>
-                                    <p class="product__details--info__meta--list"><strong>Type:</strong>
-                                        <span>Dress</span>
-                                    </p>
-                                </div>
+
                             </div>
                             <div class="quickview__social d-flex align-items-center mb-15">
                                 <label class="quickview__social--title">Social Share:</label>
@@ -257,11 +271,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="guarantee__safe--checkout">
-                                <h5 class="guarantee__safe--checkout__title">Guaranteed Safe Checkout</h5>
-                                <img class="guarantee__safe--checkout__img" src="{{ asset('assets/img/other/safe-checkout.png') }}"
-                                    alt="Payment Image">
-                            </div>
+
                         </form>
                     </div>
                 </div>

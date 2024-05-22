@@ -68,6 +68,9 @@
                         <a href="{{ route('adm.offer.page') }}"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Create Offers</span></a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('adm.clients.page') }}"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Our Clients Say</span></a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('adm.all.user') }}"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">All Users</span></a>
                     </li>
                     <li class="nav-item">

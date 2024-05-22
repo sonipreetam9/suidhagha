@@ -18,4 +18,8 @@ class ProductModel extends Model
     {
         return $this->hasMany(CartModel::class);
     }
+    public function sizes()
+    {
+        return $this->hasMany(ProductSizeModel::class,'product_id','id');
+    }
 }

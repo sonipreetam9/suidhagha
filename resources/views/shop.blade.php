@@ -39,367 +39,44 @@
                     </svg>
                     <span class="widget__filter--btn__text">Filter</span>
                 </button>
-                <div class="product__view--mode d-flex align-items-center">
-                    <div class="product__view--mode__list product__short--by align-items-center d-none d-lg-flex">
-                        <label class="product__view--label">Prev Page :</label>
-                        <div class="select shop__header--select">
-                            <select class="product__view--select">
-                                <option selected value="1">65</option>
-                                <option value="2">40</option>
-                                <option value="3">42</option>
-                                <option value="4">57 </option>
-                                <option value="5">60 </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="product__view--mode__list product__short--by align-items-center d-none d-lg-flex">
-                        <label class="product__view--label">Sort By :</label>
-                        <div class="select shop__header--select">
-                            <select class="product__view--select">
-                                <option selected value="1">Sort by latest</option>
-                                <option value="2">Sort by popularity</option>
-                                <option value="3">Sort by newness</option>
-                                <option value="4">Sort by rating </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="product__view--mode__list">
-                        <div class="product__grid--column__buttons d-flex justify-content-center">
-                            <button class="product__grid--column__buttons--icons active"
-                                aria-label="product grid button" data-toggle="tab" data-target="#product_grid">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 9 9">
-                                    <g transform="translate(-1360 -479)">
-                                        <rect id="Rectangle_5725" data-name="Rectangle 5725" width="4" height="4"
-                                            transform="translate(1360 479)" fill="currentColor" />
-                                        <rect id="Rectangle_5727" data-name="Rectangle 5727" width="4" height="4"
-                                            transform="translate(1360 484)" fill="currentColor" />
-                                        <rect id="Rectangle_5726" data-name="Rectangle 5726" width="4" height="4"
-                                            transform="translate(1365 479)" fill="currentColor" />
-                                        <rect id="Rectangle_5728" data-name="Rectangle 5728" width="4" height="4"
-                                            transform="translate(1365 484)" fill="currentColor" />
-                                    </g>
-                                </svg>
-                            </button>
-                            <button class="product__grid--column__buttons--icons" aria-label="product list button"
-                                data-toggle="tab" data-target="#product_list">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 13 8">
-                                    <g id="Group_14700" data-name="Group 14700" transform="translate(-1376 -478)">
-                                        <g transform="translate(12 -2)">
-                                            <g id="Group_1326" data-name="Group 1326">
-                                                <rect id="Rectangle_5729" data-name="Rectangle 5729" width="3"
-                                                    height="2" transform="translate(1364 483)" fill="currentColor" />
-                                                <rect id="Rectangle_5730" data-name="Rectangle 5730" width="9"
-                                                    height="2" transform="translate(1368 483)" fill="currentColor" />
-                                            </g>
-                                            <g id="Group_1328" data-name="Group 1328" transform="translate(0 -3)">
-                                                <rect id="Rectangle_5729-2" data-name="Rectangle 5729" width="3"
-                                                    height="2" transform="translate(1364 483)" fill="currentColor" />
-                                                <rect id="Rectangle_5730-2" data-name="Rectangle 5730" width="9"
-                                                    height="2" transform="translate(1368 483)" fill="currentColor" />
-                                            </g>
-                                            <g id="Group_1327" data-name="Group 1327" transform="translate(0 -1)">
-                                                <rect id="Rectangle_5731" data-name="Rectangle 5731" width="3"
-                                                    height="2" transform="translate(1364 487)" fill="currentColor" />
-                                                <rect id="Rectangle_5732" data-name="Rectangle 5732" width="9"
-                                                    height="2" transform="translate(1368 487)" fill="currentColor" />
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product__view--mode__list product__view--search d-none d-lg-block">
-                        <form class="product__view--search__form" action="#">
-                            <label>
-                                <input class="product__view--search__input border-0" placeholder="Search by"
-                                    type="text">
-                            </label>
-                            <button class="product__view--search__btn" aria-label="shop button" type="submit">
-                                <svg class="product__view--search__btn--svg" xmlns="http://www.w3.org/2000/svg"
-                                    width="22.51" height="20.443" viewBox="0 0 512 512">
-                                    <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-                                        fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
-                                    <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                        stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448" />
-                                </svg>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                <p class="product__showing--count">Showing 1–9 of 21 results</p>
+               
             </div>
             <div class="row">
                 <div class="col-xl-3 col-lg-4">
                     <div class="shop__sidebar--widget widget__area d-none d-lg-block">
                         <div class="single__widget widget__bg">
                             <h2 class="widget__title h3">Categories</h2>
-                            <ul class="widget__categories--menu">
-                                <li class="widget__categories--menu__list">
-                                    <label class="widget__categories--menu__label d-flex align-items-center">
-                                        <img class="widget__categories--menu__img"
-                                            src="assets/img/product/small-product1.png" alt="categories-img">
-                                        <span class="widget__categories--menu__text">Denim Jacket</span>
-                                        <svg class="widget__categories--menu__arrowdown--icon"
-                                            xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394">
-                                            <path
-                                                d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z"
-                                                transform="translate(-6 -8.59)" fill="currentColor"></path>
-                                        </svg>
-                                    </label>
-                                    <ul class="widget__categories--sub__menu">
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product2.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Jacket, Women</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product3.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Woolend Jacket</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product4.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Western denim</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product5.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Mini Dresss</span>
-                                            </a>
-                                        </li>
-                                    </ul>
+                            <ul class="widget__form--check">
+                                @foreach ($allcategories as $allcategorie )
+
+
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="{{ $allcategorie->name }}">{{
+                                        $allcategorie->name }}</label>
+                                    <input class="widget__form--check__input" id="{{ $allcategorie->name }}"
+                                        type="radio" value="{{ $allcategorie->name }}">
+                                    <span class="widget__form--checkmark"></span>
                                 </li>
-                                <li class="widget__categories--menu__list">
-                                    <label class="widget__categories--menu__label d-flex align-items-center">
-                                        <img class="widget__categories--menu__img"
-                                            src="assets/img/product/small-product2.png" alt="categories-img">
-                                        <span class="widget__categories--menu__text">Oversize Cotton</span>
-                                        <svg class="widget__categories--menu__arrowdown--icon"
-                                            xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394">
-                                            <path
-                                                d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z"
-                                                transform="translate(-6 -8.59)" fill="currentColor"></path>
-                                        </svg>
-                                    </label>
-                                    <ul class="widget__categories--sub__menu">
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product2.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Jacket, Women</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product3.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Woolend Jacket</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product4.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Western denim</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product5.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Mini Dresss</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="widget__categories--menu__list">
-                                    <label class="widget__categories--menu__label d-flex align-items-center">
-                                        <img class="widget__categories--menu__img"
-                                            src="assets/img/product/small-product3.png" alt="categories-img">
-                                        <span class="widget__categories--menu__text">Dairy & chesse</span>
-                                        <svg class="widget__categories--menu__arrowdown--icon"
-                                            xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394">
-                                            <path
-                                                d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z"
-                                                transform="translate(-6 -8.59)" fill="currentColor"></path>
-                                        </svg>
-                                    </label>
-                                    <ul class="widget__categories--sub__menu">
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product2.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Jacket, Women</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product3.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Woolend Jacket</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product4.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Western denim</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product5.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Mini Dresss</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="widget__categories--menu__list">
-                                    <label class="widget__categories--menu__label d-flex align-items-center">
-                                        <img class="widget__categories--menu__img"
-                                            src="assets/img/product/small-product4.png" alt="categories-img">
-                                        <span class="widget__categories--menu__text">Shoulder Bag</span>
-                                        <svg class="widget__categories--menu__arrowdown--icon"
-                                            xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394">
-                                            <path
-                                                d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z"
-                                                transform="translate(-6 -8.59)" fill="currentColor"></path>
-                                        </svg>
-                                    </label>
-                                    <ul class="widget__categories--sub__menu">
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product2.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Jacket, Women</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product3.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Woolend Jacket</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product4.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Western denim</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product5.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Mini Dresss</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="widget__categories--menu__list">
-                                    <label class="widget__categories--menu__label d-flex align-items-center">
-                                        <img class="widget__categories--menu__img"
-                                            src="assets/img/product/small-product5.png" alt="categories-img">
-                                        <span class="widget__categories--menu__text">Denim Jacket</span>
-                                        <svg class="widget__categories--menu__arrowdown--icon"
-                                            xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394">
-                                            <path
-                                                d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z"
-                                                transform="translate(-6 -8.59)" fill="currentColor"></path>
-                                        </svg>
-                                    </label>
-                                    <ul class="widget__categories--sub__menu">
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product2.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Jacket, Women</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product3.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Woolend Jacket</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product4.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Western denim</span>
-                                            </a>
-                                        </li>
-                                        <li class="widget__categories--sub__menu--list">
-                                            <a class="widget__categories--sub__menu--link d-flex align-items-center"
-                                                href="{{ route('shop.page') }}">
-                                                <img class="widget__categories--sub__menu--img"
-                                                    src="assets/img/product/small-product5.png" alt="categories-img">
-                                                <span class="widget__categories--sub__menu--text">Mini Dresss</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+
+                                @endforeach
+
                             </ul>
                         </div>
                         <div class="single__widget widget__bg">
-                            <h2 class="widget__title h3">Dietary Needs</h2>
+                            <h2 class="widget__title h3">Product Size</h2>
                             <ul class="widget__form--check">
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check1">Denim shirt</label>
-                                    <input class="widget__form--check__input" id="check1" type="checkbox">
+                                @php
+                                $j = 38;
+                                @endphp
+                                @for (; $j <= 48; $j +=2) <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check{{ $j }}">{{ $j }}</label>
+                                    <input class="widget__form--check__input" id="check{{ $j }}" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check2">Need Winter</label>
-                                    <input class="widget__form--check__input" id="check2" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check3">Fashion Trends</label>
-                                    <input class="widget__form--check__input" id="check3" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check4">Oversize Cotton</label>
-                                    <input class="widget__form--check__input" id="check4" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check5">Baking material</label>
-                                    <input class="widget__form--check__input" id="check5" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
+                                    </li>
+                                    @endfor
+
+
+
                             </ul>
                         </div>
                         <div class="single__widget price__filter widget__bg">
@@ -409,7 +86,7 @@
                                     <div class="price__filter--group">
                                         <label class="price__filter--label" for="Filter-Price-GTE2">From</label>
                                         <div class="price__filter--input border-radius-5 d-flex align-items-center">
-                                            <span class="price__filter--currency">$</span>
+                                            <span class="price__filter--currency">₹</span>
                                             <label>
                                                 <input class="price__filter--input__field border-0"
                                                     name="filter.v.price.gte" type="number" placeholder="0" min="0"
@@ -423,7 +100,7 @@
                                     <div class="price__filter--group">
                                         <label class="price__filter--label" for="Filter-Price-LTE2">To</label>
                                         <div class="price__filter--input border-radius-5 d-flex align-items-center">
-                                            <span class="price__filter--currency">$</span>
+                                            <span class="price__filter--currency">₹</span>
                                             <label>
                                                 <input class="price__filter--input__field border-0"
                                                     name="filter.v.price.lte" type="number" min="0" placeholder="250.00"
@@ -434,92 +111,6 @@
                                 </div>
                                 <button class="price__filter--btn primary__btn" type="submit">Filter</button>
                             </form>
-                        </div>
-                        <div class="single__widget widget__bg">
-                            <h2 class="widget__title h3">Top Rated Product</h2>
-                            <div class="product__grid--inner">
-                                <div class="product__items product__items--grid d-flex align-items-center">
-                                    <div class="product__items--grid__thumbnail position__relative">
-                                        <a class="product__items--link" href="#">
-                                            <img class="product__items--img product__primary--img"
-                                                src="assets/img/product/small-product1.png" alt="product-img">
-                                            <img class="product__items--img product__secondary--img"
-                                                src="assets/img/product/small-product2.png" alt="product-img">
-                                        </a>
-                                    </div>
-                                    <div class="product__items--grid__content">
-                                        <h3 class="product__items--content__title h4"><a
-                                                href="#">Women Fish Cut</a></h3>
-                                        <div class="product__items--price">
-                                            <span class="current__price">$110</span>
-                                            <span class="price__divided"></span>
-                                            <span class="old__price">$78</span>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="product__items product__items--grid d-flex align-items-center">
-                                    <div class="product__items--grid__thumbnail position__relative">
-                                        <a class="product__items--link" href="#">
-                                            <img class="product__items--img product__primary--img"
-                                                src="assets/img/product/small-product3.png" alt="product-img">
-                                            <img class="product__items--img product__secondary--img"
-                                                src="assets/img/product/small-product4.png" alt="product-img">
-                                        </a>
-                                    </div>
-                                    <div class="product__items--grid__content">
-                                        <h3 class="product__items--content__title h4"><a
-                                                href="#">Gorgeous Granite is</a></h3>
-                                        <div class="product__items--price">
-                                            <span class="current__price">$140</span>
-                                            <span class="price__divided"></span>
-                                            <span class="old__price">$115</span>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="product__items product__items--grid d-flex align-items-center">
-                                    <div class="product__items--grid__thumbnail position__relative">
-                                        <a class="product__items--link" href="#">
-                                            <img class="product__items--img product__primary--img"
-                                                src="assets/img/product/small-product5.png" alt="product-img">
-                                            <img class="product__items--img product__secondary--img"
-                                                src="assets/img/product/small-product6.png" alt="product-img">
-                                        </a>
-                                    </div>
-                                    <div class="product__items--grid__content">
-                                        <h4 class="product__items--content__title"><a
-                                                href="#">Durable A Steel </a></h4>
-                                        <div class="product__items--price">
-                                            <span class="current__price">$160</span>
-                                            <span class="price__divided"></span>
-                                            <span class="old__price">$118</span>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single__widget widget__bg">
-                            <h2 class="widget__title h3">Brands</h2>
-                            <ul class="widget__tagcloud">
-                                <li class="widget__tagcloud--list"><a class="widget__tagcloud--link"
-                                        href="{{ route('shop.page') }}">Jacket</a></li>
-                                <li class="widget__tagcloud--list"><a class="widget__tagcloud--link"
-                                        href="{{ route('shop.page') }}">Women</a></li>
-                                <li class="widget__tagcloud--list"><a class="widget__tagcloud--link"
-                                        href="{{ route('shop.page') }}">Oversize</a></li>
-                                <li class="widget__tagcloud--list"><a class="widget__tagcloud--link"
-                                        href="{{ route('shop.page') }}">Cotton </a></li>
-                                <li class="widget__tagcloud--list"><a class="widget__tagcloud--link"
-                                        href="{{ route('shop.page') }}">Shoulder </a></li>
-                                <li class="widget__tagcloud--list"><a class="widget__tagcloud--link"
-                                        href="{{ route('shop.page') }}">Winter</a></li>
-                                <li class="widget__tagcloud--list"><a class="widget__tagcloud--link"
-                                        href="{{ route('shop.page') }}">Accessories</a></li>
-                                <li class="widget__tagcloud--list"><a class="widget__tagcloud--link"
-                                        href="{{ route('shop.page') }}">Dress </a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -607,11 +198,14 @@
                                         <div class="col mb-30">
                                             <div class="product__items product__list--items d-flex">
                                                 <div class="product__items--thumbnail product__list--items__thumbnail">
-                                                    <a class="product__items--link" href="{{ route('product.detail.page',['id'=>$product->id]) }}">
+                                                    <a class="product__items--link"
+                                                        href="{{ route('product.detail.page',['id'=>$product->id]) }}">
                                                         <img class="product__items--img product__primary--img"
-                                                            src="{{ asset('uploads/Products Images/'.$product->image) }}" alt="product-img">
+                                                            src="{{ asset('uploads/Products Images/'.$product->image) }}"
+                                                            alt="product-img">
                                                         <img class="product__items--img product__secondary--img"
-                                                            src="{{ asset('uploads/Products Images/'.$product->image2) }}" alt="product-img">
+                                                            src="{{ asset('uploads/Products Images/'.$product->image2) }}"
+                                                            alt="product-img">
                                                     </a>
                                                     <div class="product__badge">
                                                         <span class="product__badge--items sale">Sale</span>
@@ -622,13 +216,13 @@
                                                         Women</span>
                                                     <h3 class="product__list--items__content--title h4 mb-10"><a
                                                             href="{{ route('product.detail.page',['id'=>$product->id]) }}">{{
-                                                                $product->name }}</a></h3>
+                                                            $product->name }}</a></h3>
                                                     <div class="product__list--items__price mb-10">
                                                         <span class="current__price">₹{{ $product->discounted_price
-                                                        }}</span>
+                                                            }}</span>
                                                         <span class="price__divided"></span>
                                                         <span class="old__price">₹{{ $product->price
-                                                        }}</span>
+                                                            }}</span>
                                                     </div>
 
                                                     <p

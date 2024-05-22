@@ -80,6 +80,14 @@
                                                     <p class="text-danger">{{ $errors->first('seq') }}</p>
                                                     @endif
                                                 </div>
+                                                <div class="col-md-4">
+                                                    <label for="highlight" class="form-label">Highlight</label>
+                                                    <select class="form-control" name="highlight" id="highlight">
+                                                        <option value="No" selected>No</option>
+                                                        <option value="Yes">Yes</option>
+                                                    </select>
+                                                </div>
+
 
                                                 <div class="col-md-12">
                                                     <button class="btn btn-primary btn-lg" type="submit" name="btnsave">Submit</button>

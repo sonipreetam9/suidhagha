@@ -23,8 +23,8 @@
     <!-- Custom Style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
         .main__header {
             background-color: rgb(235, 178, 94);
@@ -58,14 +58,33 @@
             color: rgb(0, 0, 0);
 
         }
-            .banner__img--height__md {
-        /* height: 30rem; */
-        -o-object-fit: contain;
-        object-fit: contain;
-    }
-    .banner__section--inner::before{
-        background:none;
-    }
+
+        .banner__img--height__md {
+            /* height: 30rem; */
+            -o-object-fit: contain;
+            object-fit: contain;
+        }
+
+        .banner__section--inner::before {
+            background: none;
+        }
+
+        .header__menu--link {
+            color: #000000;
+            /* background-color: red; */
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 7px;
+        }
+
+        .highlighted {
+            background-color: brown;
+            color: white;
+        }
+
+        .header__menu--link.highlighted:hover {
+            color: rgb(229, 223, 223);
+        }
     </style>
 </head>
 
@@ -114,7 +133,7 @@
 
     <!-- Start header area -->
     <header class="header__section">
-        <div class="header__topbar bg__secondary">
+        {{-- <div class="header__topbar bg__secondary">
             <div class="container-fluid">
                 <div class="header__topbar--inner d-flex align-items-center justify-content-between">
                     <div class="header__shipping">
@@ -129,7 +148,7 @@
                                     href="{{ $comp_email }}">{{ $comp_email }}</a></li>
                         </ul>
                     </div>
-                    {{-- <div class="language__currency d-none d-lg-block">
+                    <div class="language__currency d-none d-lg-block">
                         <ul class="d-flex align-items-center">
                             <li class="language__currency--list">
                                 <a class="language__switcher text-white" href="#">
@@ -170,10 +189,10 @@
                                 </div>
                             </li>
                         </ul>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="main__header header__sticky">
             <div class="container-fluid">
                 <div class="main__header--inner position__relative d-flex justify-content-between align-items-center">
@@ -200,6 +219,7 @@
                                     <option selected value="">All Categories</option>
                                     @foreach ($categories as $categorie )
                                     <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
+
                                     @endforeach
                                 </select>
                             </div>
@@ -318,14 +338,15 @@
                                 </li>
 
 
-                                @foreach ($categories as $categorie )
-
+                                @foreach ($categories as $categorie)
                                 <li class="header__menu--items style2">
-                                    <a class="header__menu--link"
-                                        href="{{ route('shop.page.find.categorie',['catName'=> $categorie->name ]) }}">{{
-                                        $categorie->name }}</a>
+                                    <a class="header__menu--link @if($categorie->highlight == 'Yes') highlighted @endif"
+                                        href="{{ route('shop.page.find.categorie', ['catName' => urlencode(Str::slug($categorie->name, '-'))]) }}">
+                                        {{ $categorie->name }}
+                                    </a>
                                 </li>
                                 @endforeach
+
 
                                 {{-- <li class="header__menu--items mega__menu--items style2">
                                     <a class="header__menu--link" href="{{ route('shop.page') }}">Shop --}}
@@ -550,7 +571,7 @@
         <style>
 
         </style>
-        <div class="header__bottom">
+        <div class="header__botto">
             <div class="container-fluid" id="mainDiv">
                 <div
                     class="header__bottom--inner position__relative d-none d-lg-flex justify-content-between align-items-center">
@@ -689,8 +710,9 @@
                                 </li> --}}
                                 @foreach ($categories as $categorie )
                                 <li class="header__menu--items d-none d-xl-block">
-                                    <a class="header__menu--link"
-                                        href="{{ route('shop.page.find.categorie',['catName'=> $categorie->name ]) }}">{{
+                                    <a class="header__menu--link  @if($categorie->highlight == 'Yes') highlighted @endif"
+                                        href="{{ route('shop.page.find.categorie',['catName'=> $categorie->name ])
+                                        }}">{{
                                         $categorie->name }}</a>
                                 </li>
                                 @endforeach
@@ -759,7 +781,7 @@
                         @foreach ($categories as $categorie )
 
                         <li class="offcanvas__menu_ul">
-                            <a class="offcanvas__menu_item"
+                            <a class="offcanvas__menu_item  @if($categorie->highlight == 'Yes') highlighted @endif"
                                 href="{{ route('shop.page.find.categorie',['catName'=> $categorie->name ]) }}">{{
                                 $categorie->name }}</a>
                         </li>

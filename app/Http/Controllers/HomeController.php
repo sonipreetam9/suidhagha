@@ -18,6 +18,7 @@ use App\Models\HomeMainBannerModel;
 use App\Models\HomeMiddleBannerModel;
 use App\Models\ReviewModel;
 use App\Models\SectionModel;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -48,10 +49,17 @@ class HomeController extends Controller
 
     public function find_by_categorie($catName)
     {
-        $categorie = CategorieModel::where("name", $catName)->first();
+
+
+        // Decode the URL-encoded characters
+    $decodedCatName = str_replace('-', ' ', $catName);
+
+    // Lookup the category in the database
+    $allcategories =CategorieModel::all();
+    $categorie = CategorieModel::where("name", $decodedCatName)->first();
         if ($categorie) {
             $products = ProductModel::where('category_id', $categorie->id)->get();
-            return view("shop", compact('products'));
+            return view("shop", compact('products','allcategories'));
         } else {
             return redirect()->back()->with('error', 'Category not found');
         }

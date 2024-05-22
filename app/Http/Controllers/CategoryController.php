@@ -28,6 +28,7 @@ class CategoryController extends Controller
                 'image' => $fileName,
                 'name' => $request->name,
                 'seq' => $request->seq,
+                'highlight' => $request->highlight,
             ]);
             return redirect()->back()->with('success', 'Categroy Added successfully.');
         } else {
@@ -80,7 +81,7 @@ class CategoryController extends Controller
         }
         $categorie->name = $request->name;
         $categorie->seq = $request->seq;
-
+        $categorie->highlight = $request->highlight;
         $categorie->save();
 
 
