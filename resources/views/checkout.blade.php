@@ -79,8 +79,8 @@
     @if ($carts->isNotEmpty())
 
     <!-- Start checkout page area -->
-    {{-- <form action="{{ route('test.req') }}" method="GET"> --}}
-    <form action="{{ route('add.to.orderItem') }}" method="POST">
+    <form action="{{ route('test.req') }}" method="post">
+    {{-- <form action="{{ route('add.to.orderItem') }}" method="POST"> --}}
         @csrf
         <div class="checkout__page--area">
             <div class="container">
@@ -369,12 +369,40 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="checkout__checkbox">
-                                        <input class="checkout__checkbox--input" id="check2" type="checkbox">
+                                    {{-- <div class="checkout__checkbox mt-4">
+                                        <input class="checkout__radio--input" id="check2" type="radio">
                                         <span class="checkout__checkbox--checkmark"></span>
                                         <label class="checkout__checkbox--label" for="check2">
                                             Save this information for next time</label>
                                     </div> --}}
+                                </div>
+                            </div>
+                            <div class="checkout__content--step section__shipping--address pt-10">
+                                <div class="section__header mb-25">
+                                    <h3 class="section__header--title">Pay Method</h3>
+                                    {{-- <p class="section__header--desc">Select the address that matches your card or payment method.</p> --}}
+                                </div>
+                                <div class="checkout__content--step__inner3 border-radius-5">
+                                    <div class="checkout__address--content__header">
+                                        <div class="shipping__contact--box__list">
+                                            <div class="shipping__radio--input">
+                                                <input class="shipping__radio--input__field" id="radiobox" name="paymethod" type="radio" value="cod" required>
+                                            </div>
+                                            <label class="shipping__radio--label" for="radiobox">
+                                                <span class="shipping__radio--label__primary">Cash On Delivery</span>
+                                            </label>
+                                        </div>
+                                        <div class="shipping__contact--box__list">
+                                            <div class="shipping__radio--input">
+                                                <input class="shipping__radio--input__field" id="radiobox" name="paymethod" type="radio" value="online" required>
+                                            </div>
+                                            <label class="shipping__radio--label" for="radiobox">
+                                                <span class="shipping__radio--label__primary">Pay Online</span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="checkout__content--step__footer d-flex align-items-center">

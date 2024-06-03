@@ -78,7 +78,7 @@
         }
 
         .highlighted {
-            background-color: brown;
+            background-color: #BC4869;
             color: white;
         }
 
@@ -91,7 +91,7 @@
 <body>
 
     <!-- Start preloader -->
-    <div id="preloader">
+    {{-- <div id="preloader">
         <div id="ctn-preloader" class="ctn-preloader">
             <div class="animation-preloader">
                 <div class="spinner"></div>
@@ -128,7 +128,7 @@
             <div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
         </div>
-    </div>
+    </div> --}}
     <!-- End preloader -->
 
     <!-- Start header area -->
@@ -259,11 +259,6 @@
                                     </svg>
 
                                     <span class="header__account--btn__text">My Profile</span>
-
-
-
-
-
                                 </a>
                                 @else
 
@@ -341,7 +336,7 @@
                                 @foreach ($categories as $categorie)
                                 <li class="header__menu--items style2">
                                     <a class="header__menu--link @if($categorie->highlight == 'Yes') highlighted @endif"
-                                        href="{{ route('shop.page.find.categorie', ['catName' => urlencode(Str::slug($categorie->name, '-'))]) }}">
+                                        href="{{ route('shop.page.find.categorie', ['catName' => $categorie->url_link ]) }}">
                                         {{ $categorie->name }}
                                     </a>
                                 </li>
@@ -711,7 +706,7 @@
                                 @foreach ($categories as $categorie )
                                 <li class="header__menu--items d-none d-xl-block">
                                     <a class="header__menu--link  @if($categorie->highlight == 'Yes') highlighted @endif"
-                                        href="{{ route('shop.page.find.categorie',['catName'=> $categorie->name ])
+                                        href="{{ route('shop.page.find.categorie',['catName'=> $categorie->url_link ])
                                         }}">{{
                                         $categorie->name }}</a>
                                 </li>
@@ -782,7 +777,7 @@
 
                         <li class="offcanvas__menu_ul">
                             <a class="offcanvas__menu_item  @if($categorie->highlight == 'Yes') highlighted @endif"
-                                href="{{ route('shop.page.find.categorie',['catName'=> $categorie->name ]) }}">{{
+                                href="{{ route('shop.page.find.categorie',['catName'=> $categorie->url_link ]) }}">{{
                                 $categorie->name }}</a>
                         </li>
                         @endforeach

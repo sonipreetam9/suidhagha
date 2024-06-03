@@ -12,12 +12,15 @@ class CategoryController extends Controller
         return view('admin.add_category');
     }
     public function add_categoty(Request $request)
-    {
+    {$originalString = $request->name;
+        $modifiedString = str_replace(' ', '-', $originalString);
+
 
         $vaild = $request->validate([
             'image' => 'required|file|mimes:jpeg,png,jpg,webp',
             'name' => 'required',
             'seq' => 'required',
+
         ]);
         if ($vaild) {
             $file = $request->file('image');
@@ -29,6 +32,7 @@ class CategoryController extends Controller
                 'name' => $request->name,
                 'seq' => $request->seq,
                 'highlight' => $request->highlight,
+                'url_link'=>$modifiedString,
             ]);
             return redirect()->back()->with('success', 'Categroy Added successfully.');
         } else {
@@ -56,6 +60,8 @@ class CategoryController extends Controller
     }
     public function update_category(Request $request, $id)
     {
+        $originalString = $request->name;
+        $modifiedString = str_replace(' ', '-', $originalString);
         $request->validate([
             'image' => 'file|mimes:jpeg,png,jpg,webp',
         ]);
@@ -82,6 +88,7 @@ class CategoryController extends Controller
         $categorie->name = $request->name;
         $categorie->seq = $request->seq;
         $categorie->highlight = $request->highlight;
+        $categorie->url_link=$modifiedString;
         $categorie->save();
 
 

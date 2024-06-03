@@ -153,6 +153,11 @@ class OrderController extends Controller
             $offerPercentage = NULL;
             $priceAfterCode = $request->total_price;
         }
+        if($request->paymethod=="cod"){
+            $paymethod="cash on delivery";
+        }
+
+
         $productNames = [];
         $productQuantities = [];
         $city = CityModel::where('id', $request->city)->first();

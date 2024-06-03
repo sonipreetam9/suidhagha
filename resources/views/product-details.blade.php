@@ -158,12 +158,12 @@
                         <form action="#">
                             <h2 class="product__details--info__title mb-15">{{ $product->name }}</h2>
                             <div class="product__details--info__price mb-10">
-                                <span class="current__price">₹{{ $product->discounted_price }}</span>
+                                <span class="current__price">MRP ₹{{ $product->discounted_price }}</span>
                                 <span class="price__divided"></span>
-                                <span class="old__price">₹{{ $product->price }}</span>
+                                <span class="old__price">MRP ₹{{ $product->price }}</span>
                             </div>
-
-                            <p class="product__details--info__desc mb-15">{{ $product->about1 }}</p>
+                            <p style="font-size: 15px" class="text-success mt-0">Inculsive of all Taxex</p>
+                            <p class="product__details--info__desc mb-15"></p>
                             <div class="product__variant">
 
                                 <div class="product__variant--list mb-15">
@@ -171,15 +171,19 @@
                                         <legend class="product__variant--title mb-8">Available Size in:</legend>
                                         @foreach ($sizes as $size )
 
-                                        <input id="size{{ $size->id }}" name="size" type="radio" checked="" value="{{ $size->value }}">
-                                        <label class="variant__size--value red" for="size{{ $size->id }}">{{ $size->value }}</label>
+                                        <input id="size{{ $size->id }}" name="size" type="radio" checked=""
+                                            value="{{ $size->value }}">
+                                        <label class="variant__size--value red" for="size{{ $size->id }}">{{
+                                            $size->value }}</label>
 
                                         @endforeach
-
+                                        <span>- Select Size</span>
                                     </fieldset>
                                 </div>
                                 <div class="product__variant--list quantity d-flex align-items-center mb-20">
-                                    <div class="quantity__box">
+
+                                    {{-- <div class="quantity__box">
+
                                         <button type="button"
                                             class="quantity__value quickview__value--quantity decrease"
                                             aria-label="quantity value" value="Decrease Value">-</button>
@@ -190,11 +194,17 @@
                                         <button type="button"
                                             class="quantity__value quickview__value--quantity increase"
                                             aria-label="quantity value" value="Increase Value">+</button>
-                                    </div>
+                                    </div> --}}
                                     @if (Auth::user())
-                                    <a class="quickview__cart--btn primary__btn addToCartBtn " data-id="{{ $product->id }}">Add To Cart</a>
+                                    <a class="quickview__cart--btn primary__btn addToCartBtn "
+                                        data-id="{{ $product->id }}">Add To Cart</a>
+                                    <a class="quickview__cart--btn primary__btn "
+                                        href="{{ route('buy.now', ['id' => $product->id]) }}">Buy Now</a>
                                     @else
-                                    <a href="{{ route('login') }}" class="quickview__cart--btn primary__btn ">Add To Cart</a>
+                                    <a href="{{ route('login') }}" class="quickview__cart--btn primary__btn ">Add To
+                                        Cart</a>
+                                    <a href="{{ route('login') }}" class="quickview__cart--btn primary__btn ">Buy
+                                        Now</a>
                                     @endif
                                 </div>
 
@@ -205,7 +215,7 @@
                                 <ul class="quickview__social--wrapper mt-0 d-flex">
                                     <li class="quickview__social--list">
                                         <a class="quickview__social--icon" target="_blank"
-                                            href="https://www.facebook.com">
+                                            href="https://www.facebook.com/suidhaghaindia">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="7.667" height="16.524"
                                                 viewBox="0 0 7.667 16.524">
                                                 <path data-name="Path 237"
@@ -215,7 +225,7 @@
                                             <span class="visually-hidden">Facebook</span>
                                         </a>
                                     </li>
-                                    <li class="quickview__social--list">
+                                    {{-- <li class="quickview__social--list">
                                         <a class="quickview__social--icon" target="_blank" href="https://twitter.com">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16.489" height="13.384"
                                                 viewBox="0 0 16.489 13.384">
@@ -225,10 +235,10 @@
                                             </svg>
                                             <span class="visually-hidden">Twitter</span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li class="quickview__social--list">
                                         <a class="quickview__social--icon" target="_blank"
-                                            href="https://www.instagram.com">
+                                            href="https://www.instagram.com/suidhaghaindia/?hl=en">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16.497" height="16.492"
                                                 viewBox="0 0 19.497 19.492">
                                                 <path data-name="Icon awesome-instagram"
@@ -240,7 +250,7 @@
                                     </li>
                                     <li class="quickview__social--list">
                                         <a class="quickview__social--icon" target="_blank"
-                                            href="https://www.youtube.com">
+                                            href="https://www.youtube.com/channel/UCEnMW_0_qq5dnbYzsy1US3A">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16.49" height="11.582"
                                                 viewBox="0 0 16.49 11.582">
                                                 <path data-name="Path 321"
@@ -252,7 +262,41 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="col-md-12 row" style="margin-top: 30px">
+                                <p class="col-md-5">* 15 Days Easy Retrun</p>
+                                <p class="col-md-5">* Free Shiping</p>
+                                <p class="col-md-5">* Assuredquality</p>
+                                <p class="col-md-5">* COD Available</p>
+                            </div>
+                            <p>* Wash Care</p>
+                            <p>
+                                <a data-bs-toggle="collapse" href="#product-details" role="button" aria-expanded="false"
+                                    aria-controls="product-details">
+                                    *Product Details 
+                                </a>
 
+                            </p>
+                            <div class="collapse" id="product-details">
+                                <div class="card card-body">
+                                    {{ $product->about1 }}
+                                </div>
+                            </div>
+                            <p>
+                                <a data-bs-toggle="collapse" href="#wash-care" role="button" aria-expanded="false"
+                                    aria-controls="wash-care">
+                                    *Wash Care
+                                </a>
+
+                            </p>
+                            <div class="collapse" id="wash-care">
+                                <div class="card card-body">
+                                    {{ "empty" }}
+                                </div>
+                            </div>
+                            <p>*Retrun Policy </p>
+                            Your Satisfaction is our top Priority. If you'e not completely Satisfied with the Product.
+                            We offer a hassie Free no Questions askek 15 Days Return and Refund
+                            For more details Please read <a href="{{ route('returns.refunds.page') }}">Return Policy</a>
                         </form>
                     </div>
                 </div>

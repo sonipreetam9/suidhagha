@@ -31,7 +31,8 @@ class OrderModel extends Model
         'coupon_code',
         'discount_percentage',
         'price_after_coupon',
-
+        'payment_method',
+        'payment_status',
     ];
     public function user()
     {

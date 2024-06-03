@@ -5,10 +5,10 @@
     <p><strong>Last Updated:</strong> 10-May-2024</p>
 
     <h3>1. Returns</h3>
-    <p>We accept returns within 7 days of the original purchase date. To be eligible for a return, your item must be unused and in the same condition that you received it. It must also be in the original packaging.</p>
+    <p>We accept returns within 10 days of the original purchase date. To be eligible for a return, your item must be unused and in the same condition that you received it. It must also be in the original packaging.</p>
 
     <h3>2. Refunds</h3>
-    <p>Once we receive your item, we will inspect it and notify you that we have received your returned item. We will immediately notify you on the status of your refund after inspecting the item. If your return is approved, we will initiate a refund to your original method of payment. You will receive the credit within a certain amount of days, depending on your card issuer's policies.</p>
+    <p>Once we receive your item, we will inspect it and notify you that we have received your returned item. We will immediately notify you on the status of your refund after inspecting the item. If your return is approved, we will initiate a refund to your original method of payment. You will receive the credit within a certain amount of 10 days, depending on your card issuer's policies.</p>
 
     <!-- Add more sections as needed -->
 
