@@ -42,9 +42,9 @@
                     <li class="nav-item">
                         <a href="{{ route('adm.all.order.page') }}"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Recent Orders</span></a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('adm.datewise.order.page') }}"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Datewise Orders</span></a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Homepage Banners</span></a>
                         <ul class="pcoded-submenu">

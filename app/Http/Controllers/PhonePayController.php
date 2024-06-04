@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrderModel;
 use Illuminate\Http\Request;
 use Ixudra\Curl\Facades\Curl;
 
 class PhonePayController extends Controller
 {
-    public function phonepay(Request $request)
+    public function phonepay(Request $request, $orderID, $amount)
     {
+
+        $redirectUrl = route('phonepay.response', ['orderID' => $orderID]);
+
+        // dd($orderID,$amount);
         $amount = $request->amount;
         if ($amount == null) {
             return redirect()->back()->with('error', 'Please enter amount');
@@ -18,9 +23,9 @@ class PhonePayController extends Controller
             "merchantTransactionId" => "MT7850590068188104",
             "merchantUserId" => "MUID123",
             "amount" => $amount * 100,
-            "redirectUrl" => route('phonepay.resoponse'),
+            "redirectUrl" => $redirectUrl,
             "redirectMode" => "REDIRECT",
-            "callbackUrl" => route('phonepay.resoponse'),
+            "callbackUrl" => $redirectUrl,
             "mobileNumber" => "9999999999",
             "paymentInstrument" => [
                 "type" => "PAY_PAGE"
@@ -49,7 +54,7 @@ class PhonePayController extends Controller
 
 
     }
-    public function phonepay_response(Request $request)
+    public function phonepay_response(Request $request, $orderID)
     {
         // Retrieve data from session
         $session = session()->get('phonepe_response');
@@ -61,34 +66,60 @@ class PhonePayController extends Controller
         // Calculate X-VERIFY header
         $finalXHeader = hash('sha256', '/pg/v1/status/' . $merchantId . '/' . $transactionId . $saltKey) . '###' . $saltIndex;
 
-        $finalXHeader = hash('sha256', '/pg/v1/status/' . $merchantId . '/' . $transactionId . $saltKey) . '###' . $saltIndex;
 
 
         $curl = curl_init();
 
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api-preprod.phonepe.com/apis/merchant-simulator/pg/v1/status/' . $merchantId . '/' . $transactionId,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => false,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET',
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json',
-                'accept: application/json',
-                'X-VERIFY: ' . $finalXHeader,
-                'X-MERCHANT-ID: ' . $transactionId
-            ),
-        )
+        curl_setopt_array(
+            $curl,
+            array(
+                CURLOPT_URL => 'https://api-preprod.phonepe.com/apis/merchant-simulator/pg/v1/status/' . $merchantId . '/' . $transactionId,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => false,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/json',
+                    'accept: application/json',
+                    'X-VERIFY: ' . $finalXHeader,
+                    'X-MERCHANT-ID: ' . $transactionId
+                ),
+            )
         );
 
         $response = curl_exec($curl);
 
         curl_close($curl);
 
-        dd(json_decode($response));
+        $array = json_decode($response, true);
+        // $response = json_decode($response);
+        // $array = $response->json();
+        if (isset($array)) {
+            $merchantId=$array['data']['merchantId'];
+            $merchantTransactionId=$array['data']['merchantTransactionId'];
+            $transactionId = $array['data']['transactionId'];
+            $amount = $array['data']['amount'];
+            $state = $array['data']['state'];
+            $responseCode= $array['data']['responseCode'];
+            $paymentInstrument = $array['data']['paymentInstrument']['type'];
+            $pgTransactionId=$array['data']['paymentInstrument']['pgTransactionId'];
+            // $pgServiceTransactionId=$array['data']['paymentInstrument']['pgServiceTransactionId'];
+            $bankTransactionId=$array['data']['paymentInstrument']['bankTransactionId'];
+            $bankId=$array['data']['paymentInstrument']['bankId'];
+            $arn=$array['data']['paymentInstrument']['arn'];
+            $orderID=base64_decode($orderID);
+
+            $order=OrderModel::findOrFail($orderID);
+            $order->update([
+                'payment_status'=>$state,
+                'payment_info'=>$response,
+            ]);
+            $orderID=base64_encode($orderID);
+            return redirect()->route('thankyou',['order_id'=>$orderID]);
+        }
         // flash(translate('Your order has been placed successfully. Please submit payment information from purchase history'))->success();
         // return redirect()->route('order_confirmed');
     }

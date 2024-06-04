@@ -33,6 +33,7 @@ class OrderModel extends Model
         'price_after_coupon',
         'payment_method',
         'payment_status',
+        'payment_info',
     ];
     public function user()
     {

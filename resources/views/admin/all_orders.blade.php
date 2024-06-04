@@ -80,6 +80,7 @@ $i = 0;
                                                                 <th>Total</th>
                                                                 <th>Address</th>
                                                                 <th>Status</th>
+                                                                <th>Payment Status</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
@@ -129,6 +130,8 @@ $i = 0;
                                                                     @endif
                                                                 </td>
                                                                 <td>{{ $order->order_status }}</td>
+                                                                <td>{{ $order->payment_status }}</td>
+
                                                                 <td>
                                                                     <form action="{{ route('adm.view.order',['id'=>$order->id]) }}" method="POST">
                                                                         @csrf
@@ -205,6 +208,7 @@ $i = 0;
                                                                 <th>Total</th>
                                                                 <th>Address</th>
                                                                 <th>Status</th>
+                                                                <th>Payment Status</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
@@ -256,6 +260,7 @@ $i = 0;
                                                                     @endif
                                                                 </td>
                                                                 <td>{{ $order->order_status }}</td>
+                                                                <td>{{ $order->payment_status }}</td>
                                                                 <td>
                                                                     <form action="{{ route('adm.view.order',['id'=>$order->id]) }}" method="POST">
                                                                         @csrf
@@ -329,6 +334,7 @@ $i = 0;
                                                                 <th>Total</th>
                                                                 <th>Address</th>
                                                                 <th>Status</th>
+                                                                <th>Payment Status</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
@@ -382,6 +388,7 @@ $i = 0;
                                                                     @endif
                                                                 </td>
                                                                 <td>{{ $order->order_status }}</td>
+                                                                <td>{{ $order->payment_status }}</td>
                                                                 <td>
                                                                     <form action="{{ route('adm.view.order',['id'=>$order->id]) }}" method="POST">
                                                                         @csrf
@@ -458,6 +465,7 @@ $i = 0;
                                                                     <th>Total</th>
                                                                     <th>Address</th>
                                                                     <th>Status</th>
+                                                                    <th>Payment Status</th>
                                                                     <th>Action</th>
                                                                 </tr>
                                                             </thead>
@@ -511,6 +519,7 @@ $i = 0;
                                                                         @endif
                                                                     </td>
                                                                     <td>{{ $order->order_status }}</td>
+                                                                    <td>{{ $order->payment_status }}</td>
                                                                     <td>
                                                                         <form action="{{ route('adm.view.order',['id'=>$order->id]) }}" method="POST">
                                                                             @csrf
@@ -544,6 +553,7 @@ $i = 0;
                                                                 <th>Total</th>
                                                                 <th>Address</th>
                                                                 <th>Status</th>
+                                                                <th>Payment Status</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
@@ -597,6 +607,7 @@ $i = 0;
                                                                     @endif
                                                                 </td>
                                                                 <td>{{ $order->order_status }}</td>
+                                                                <td>{{ $order->payment_status }}</td>
                                                                 <td>
                                                                     <form action="{{ route('adm.view.order',['id'=>$order->id]) }}" method="POST">
                                                                         @csrf

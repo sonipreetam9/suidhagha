@@ -114,8 +114,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/my-orders', [OrderController::class, 'order_page'])->name('order.page');
     Route::post('/delete-auth', [AuthController::class, 'delete'])->name('delete.auth');
     Route::post('/change-password', [AuthController::class, 'change_password'])->name('change.password');
-    Route::get('/pay-onilne-phonepay', [PhonePayController::class, 'phonepay'])->name('phonepay.get');
-    Route::any('/phonepay-resoponse', [PhonePayController::class, 'phonepay_response'])->name('phonepay.resoponse');
+    Route::get('/pay-onilne-phonepay/{orderID}/{amount}', [PhonePayController::class, 'phonepay'])->name('phonepay.get');
+    Route::any('/phonepay-resoponse/{orderID}', [PhonePayController::class, 'phonepay_response'])->name('phonepay.response');
 });
 
 

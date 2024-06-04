@@ -79,8 +79,8 @@
     @if ($carts->isNotEmpty())
 
     <!-- Start checkout page area -->
-    <form action="{{ route('test.req') }}" method="post">
-    {{-- <form action="{{ route('add.to.orderItem') }}" method="POST"> --}}
+    {{-- <form action="{{ route('test.req') }}" method="post"> --}}
+    <form action="{{ route('add.to.orderItem') }}" method="POST">
         @csrf
         <div class="checkout__page--area">
             <div class="container">

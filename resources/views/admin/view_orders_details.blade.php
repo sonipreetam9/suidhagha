@@ -35,98 +35,101 @@
                                         @endif
                                         <div class="table-responsive">
                                             {{-- <table class="table" id="pc-dt-simple"> --}}
-                                            <table class="table" id="pc-dt">
-                                                <table class="table table-striped">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">Order ID</th>
-                                                            <td>{{ $order->order_num }}</td>
-                                                        </tr>
-                                                        {{-- <tr>
-                                                            <th scope="row">User ID</th>
-                                                            <td>{{ $order->user_id }}</td>
-                                                        </tr> --}}
-                                                        {{-- <tr>
-                                                            <th scope="row">Product Name</th>
-                                                            <td>{{ $product->name }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Brand Name</th>
-                                                            <td>{{ $brand->name }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Category</th>
-                                                            <td>{{ $category->name}}</td>
-                                                        </tr> --}}
-                                                        {{-- <tr>
-                                                            <th scope="row">Company</th>
-                                                            <td>{{ $product->model }}</td>
-                                                        </tr> --}}
-                                                        {{-- <tr>
-                                                            <th scope="row">Color</th>
-                                                            <td>{{ $product->colors }}</td>
-                                                        </tr> --}}
-                                                        {{-- <tr>
-                                                            <th scope="row">Product Year</th>
-                                                            <td>{{ $product->year }}</td>
+                                                <table class="table" id="pc-dt">
+                                                    <table class="table table-striped">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">Order ID</th>
+                                                                <td>{{ $order->order_num }}</td>
+                                                            </tr>
+                                                            {{-- <tr>
+                                                                <th scope="row">User ID</th>
+                                                                <td>{{ $order->user_id }}</td>
+                                                            </tr> --}}
+                                                            {{-- <tr>
+                                                                <th scope="row">Product Name</th>
+                                                                <td>{{ $product->name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Brand Name</th>
+                                                                <td>{{ $brand->name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Category</th>
+                                                                <td>{{ $category->name}}</td>
+                                                            </tr> --}}
+                                                            {{-- <tr>
+                                                                <th scope="row">Company</th>
+                                                                <td>{{ $product->model }}</td>
+                                                            </tr> --}}
+                                                            {{-- <tr>
+                                                                <th scope="row">Color</th>
+                                                                <td>{{ $product->colors }}</td>
+                                                            </tr> --}}
+                                                            {{-- <tr>
+                                                                <th scope="row">Product Year</th>
+                                                                <td>{{ $product->year }}</td>
 
-                                                        </tr> --}}
-                                                        {{-- <tr>
-                                                            <th scope="row">Original Price </th>
-                                                            <td>{{ $item->original_price }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Discounted Price</th>
-                                                            <td>{{ $item->discounted_price }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Item quantity</th>
-                                                            <td>{{ $item->item_count }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Total Price</th>
-                                                            <td>{{ $item->total_price }}</td>
-                                                        </tr> --}}
-                                                        <tr>
-                                                            <th scope="row">Offer Name</th>
-                                                            <td>{{ $order->coupon_name ?? "N/A" }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Discount in %</th>
-                                                            <td>{{ $order->discount_percentage ?? "N/A" }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Coupon Code</th>
-                                                            <td>{{ $order->coupon_code ?? "N/A" }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Price before Offer</th>
-                                                            <td>₹ {{ $order->total_price ?? "N/A" }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Price After Offer</th>
-                                                            <td>₹ {{ $order->price_after_coupon ?? "N/A" }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Estimate Date</th>
-                                                            <td>{{ $order->estimate_date }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Order Status</th>
-                                                            <td>{{ $order->order_status }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Created Order</th>
-                                                            <td>{{ \Carbon\Carbon::parse( $order->created_at)->format('h:i:s A d-m-Y') }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Updated Order</th>
-                                                            <td>{{ \Carbon\Carbon::parse($order->updated_at)->format('h:i:s A d-m-Y') }}</td>
+                                                            </tr> --}}
+                                                            {{-- <tr>
+                                                                <th scope="row">Original Price </th>
+                                                                <td>{{ $item->original_price }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Discounted Price</th>
+                                                                <td>{{ $item->discounted_price }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Item quantity</th>
+                                                                <td>{{ $item->item_count }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Total Price</th>
+                                                                <td>{{ $item->total_price }}</td>
+                                                            </tr> --}}
+                                                            <tr>
+                                                                <th scope="row">Offer Name</th>
+                                                                <td>{{ $order->coupon_name ?? "N/A" }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Discount in %</th>
+                                                                <td>{{ $order->discount_percentage ?? "N/A" }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Coupon Code</th>
+                                                                <td>{{ $order->coupon_code ?? "N/A" }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Price before Offer</th>
+                                                                <td>₹ {{ $order->total_price ?? "N/A" }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Price After Offer</th>
+                                                                <td>₹ {{ $order->price_after_coupon ?? "N/A" }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Estimate Date</th>
+                                                                <td>{{ $order->estimate_date }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Order Status</th>
+                                                                <td>{{ $order->order_status }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Created Order</th>
+                                                                <td>{{ \Carbon\Carbon::parse(
+                                                                    $order->created_at)->format('h:i:s A d-m-Y') }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Updated Order</th>
+                                                                <td>{{
+                                                                    \Carbon\Carbon::parse($order->updated_at)->format('h:i:s
+                                                                    A d-m-Y') }}</td>
 
-                                                        </tr>
-                                                    </tbody>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </table>
-                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -169,7 +172,8 @@
                                                         <td>{{ $i }}</td>
                                                         <td>
                                                             <div class="user-icon">
-                                                                <img src="{{ asset('uploads/Products Images/'.$item->product->image) }}" style="height: 50px; width: 50px;">
+                                                                <img src="{{ asset('uploads/Products Images/'.$item->product->image) }}"
+                                                                    style="height: 50px; width: 50px;">
                                                             </div>
                                                         </td>
                                                         <td>
@@ -217,6 +221,69 @@
                             </div>
                         </div>
                         <div class="row">
+                            <style>
+                                table {
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                }
+                                table, th, {
+                                    border: 1px solid black;
+                                }
+                                th, td {
+                                    padding: 8px;
+                                    text-align: left;
+                                }
+                            </style>
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Payment Details</h5>
+                                    </div>
+                                    <div class="card-block table-border-style">
+
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Field</th>
+                                                    <th>Value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if ($paymentInfo ==null)
+                                                {{ "Cash On Delivery" }}
+                                                @else
+                                                @foreach ($paymentInfo as $key => $value)
+                                                    @if (is_array($value))
+                                                        @foreach ($value as $subKey => $subValue)
+                                                            @if (is_array($subValue))
+                                                                @foreach ($subValue as $nestedKey => $nestedValue)
+                                                                    <tr>
+                                                                        <td>{{ ucfirst($nestedKey) }}</td>
+                                                                        <td>{{ $nestedValue ?? 'N/A' }}</td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @else
+                                                                <tr>
+                                                                    <td>{{ ucfirst($subKey) }}</td>
+                                                                    <td>{{ $subValue ?? 'N/A' }}</td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                        <tr>
+                                                            <td>{{ ucfirst($key) }}</td>
+                                                            <td>{{ $value ?? 'N/A' }}</td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-xl-6">
                                 <div class="card">
                                     <div class="card-header">
@@ -226,41 +293,41 @@
 
                                         <div class="table-responsive">
                                             {{-- <table class="table" id="pc-dt-simple"> --}}
-                                            <table class="table" id="pc-dt-">
-                                                <table class="table table-striped">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">First Name</th>
-                                                            <td>{{ $user->first_name }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Last Name</th>
-                                                            <td>{{ $user->last_name }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Phone</th>
-                                                            <td>{{ $user->phone }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Email</th>
-                                                            <td>{{ $user->email }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Address</th>
-                                                            <td>{{ $user->address}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">City</th>
-                                                            <td>{{ $user->city}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">State</th>
-                                                            <td>{{ $user->state}}</td>
-                                                        </tr>
+                                                <table class="table" id="pc-dt-">
+                                                    <table class="table table-striped">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">First Name</th>
+                                                                <td>{{ $user->first_name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Last Name</th>
+                                                                <td>{{ $user->last_name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Phone</th>
+                                                                <td>{{ $user->phone }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Email</th>
+                                                                <td>{{ $user->email }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Address</th>
+                                                                <td>{{ $user->address}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">City</th>
+                                                                <td>{{ $user->city}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">State</th>
+                                                                <td>{{ $user->state}}</td>
+                                                            </tr>
 
-                                                    </tbody>
+                                                        </tbody>
+                                                    </table>
                                                 </table>
-                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -274,44 +341,44 @@
 
                                         <div class="table-responsive">
                                             {{-- <table class="table" id="pc-dt-simple"> --}}
-                                            <table class="table" id="pc-dt-">
-                                                <table class="table table-striped">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">Name</th>
-                                                            <td>{{ $address->name }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Address Line 1</th>
-                                                            <td>{{ $address->address_line1 }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Address Line 2 </th>
-                                                            <td>{{ $address->address_line2 }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Near By</th>
-                                                            <td>{{ $address->near_by }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">City</th>
-                                                            <td>{{ $address->city }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">State</th>
-                                                            <td>{{ $address->state }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Country</th>
-                                                            <td>{{ $address->country }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Pin Code</th>
-                                                            <td>{{ $address->pin }}</td>
-                                                        </tr>
-                                                    </tbody>
+                                                <table class="table" id="pc-dt-">
+                                                    <table class="table table-striped">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">Name</th>
+                                                                <td>{{ $address->name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Address Line 1</th>
+                                                                <td>{{ $address->address_line1 }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Address Line 2 </th>
+                                                                <td>{{ $address->address_line2 }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Near By</th>
+                                                                <td>{{ $address->near_by }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">City</th>
+                                                                <td>{{ $address->city }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">State</th>
+                                                                <td>{{ $address->state }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Country</th>
+                                                                <td>{{ $address->country }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Pin Code</th>
+                                                                <td>{{ $address->pin }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </table>
-                                            </table>
                                         </div>
                                     </div>
                                 </div>
