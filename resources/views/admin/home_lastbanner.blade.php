@@ -49,6 +49,17 @@ $i=0;
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="form-group">
+                                                        <label class="form-label" for="ci">Select Category</label>
+                                                        <select name="category_id" id="ci" class="form-control" required>
+                                                            <option value="0">Select Category</option>
+                                                            @foreach ($categories as $cate)
+                                                            <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
                                                         <label class="form-label">Discount</label>
                                                         <input class="form-control" type="number" name="discount">
                                                     </div>
@@ -122,7 +133,7 @@ $i=0;
                                                         <td>
                                                             <div class="user-icon">
 
-                                                                <img src="{{ asset('uploads/Last Bannner/'.$list->image) }}" style="height: 50px; width: 50px;">
+                                                                <img src="{{ asset('uploads/Last Banner/'.$list->image) }}" style="height: 50px; width: 50px;">
 
                                                             </div>
                                                         </td>
@@ -143,6 +154,20 @@ $i=0;
                                                                                 @method('POST')
                                                                                 <input type="hidden" value="id" name="id">
                                                                                 <div class="row">
+                                                                                    <div class="form-group">
+                                                                                        <label class="form-label" for="ci">Select Category</label>
+                                                                                        <select name="category_id" id="ci" class="form-control" required>
+                                                                                            @if($list->category_id)
+                                                                                            <option selected value="{{ $list->category_id }}">{{ $list->category->name }}</option>
+                                                                                            @else
+                                                                                            <option selected value="0">Select Category</option>
+
+                                                                                            @endif
+                                                                                            @foreach ($categories as $cate)
+                                                                                            <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                                                                                            @endforeach
+                                                                                        </select>
+                                                                                    </div>
                                                                                     <div class="col-md-12 col-xs-12">
                                                                                         <div class="form-group">
                                                                                             <label for="input1" class="form-label">Title</label>
@@ -161,7 +186,7 @@ $i=0;
                                                                                     </div>
                                                                                     <div class="col-md-4 col-xs-12">
                                                                                         <div class="form-group">
-                                                                                            <img src="{{ asset('uploads/Last Bannner/'.$list->image) }}" style="width: 100px; height: 100px;">
+                                                                                            <img src="{{ asset('uploads/Last Banner/'.$list->image) }}" style="width: 100px; height: 100px;">
 
                                                                                             <br>
                                                                                             <span class="text-primary" style="margin-left: 12px">Old Image</span>

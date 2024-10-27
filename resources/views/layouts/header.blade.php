@@ -75,6 +75,7 @@
             padding: 8px;
             border-radius: 5px;
             margin-bottom: 7px;
+            font-size: 12px;
         }
 
         .highlighted {
@@ -84,6 +85,9 @@
 
         .header__menu--link.highlighted:hover {
             color: rgb(229, 223, 223);
+        }
+        .header__section{
+            background: #000 !important;
         }
     </style>
 </head>
@@ -193,6 +197,33 @@
                 </div>
             </div>
         </div> --}}
+        <style>
+            .header__select--inner {
+                border-radius: 23px 0px 0px 23px;
+                /* background:rgba(235, 179, 94, 0.616); */
+            }
+
+            .header__search--button {
+                /* background:rgba(235, 179, 94, 0.747); */
+
+                border-radius: 0px 23px 23px 0px;
+            }
+
+            .header__search--input {
+                border-radius: 0px 23px 23px 0px;
+                /* background:rgba(235, 179, 94, 0.705); */
+
+            }
+
+            .header__search--form {
+                border: none;
+                /* border:1px solid white;
+                border-radius: 20px; */
+            }
+            /* .main__header{
+                background: none !important;
+            } */
+        </style>
         <div class="main__header header__sticky">
             <div class="container-fluid">
                 <div class="main__header--inner position__relative d-flex justify-content-between align-items-center">
@@ -213,9 +244,10 @@
                                     alt="logo-img" width="150" height="50"></a></h1>
                     </div>
                     <div class="header__search--widget header__sticky--none d-none d-lg-block">
-                        <form class="d-flex header__search--form" action="#">
+                        <form class="d-flex header__search--form" action="{{ route('search.products.post') }}" method="POST">
+                            @csrf
                             <div class="header__select--categories select">
-                                <select class="header__select--inner">
+                                <select class="header__select--inner" name="categorie">
                                     <option selected value="">All Categories</option>
                                     @foreach ($categories as $categorie )
                                     <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
@@ -225,7 +257,7 @@
                             </div>
                             <div class="header__search--box">
                                 <label>
-                                    <input class="header__search--input" placeholder="Suit Set , Dress" type="text">
+                                    <input class="header__search--input" placeholder="Suit Set , Dress" type="text" name="name">
                                 </label>
                                 <button class="header__search--button bg__secondary text-white" type="submit"
                                     aria-label="search button">
@@ -334,13 +366,43 @@
 
 
                                 @foreach ($categories as $categorie)
+                                @if($categorie->in_navbar === "Yes")
+
                                 <li class="header__menu--items style2">
                                     <a class="header__menu--link @if($categorie->highlight == 'Yes') highlighted @endif"
                                         href="{{ route('shop.page.find.categorie', ['catName' => $categorie->url_link ]) }}">
-                                        {{ $categorie->name }}
+                                        {{ $categorie->name }} <svg class="menu__arrowdown--icon"
+                                            xmlns="http://www.w3.org/2000/svg" width="12" height="7.41"
+                                            viewBox="0 0 12 7.41">
+                                            <path d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z"
+                                                transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7" />
+                                        </svg>
                                     </a>
+                                    {{-- Check if the category has subcategories --}}
+                                    @if($categorie->subcategories && $categorie->subcategories->isNotEmpty())
+                                    <ul class="header__sub--menu">
+                                        @foreach($categorie->subcategories as $subcategory)
+                                        <li class="header__sub--menu__items">
+                                            <a href="{{ route('shop.page.find.subcategorie', ['subCate' => $subcategory->name ]) }}"
+                                                class="header__sub--menu__link">
+                                                {{ $subcategory->name }}
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                    @else
+                                    <ul class="header__sub--menu">
+                                        <li class="header__sub--menu__items">
+                                            <a href="javascript:void(0);" class="header__sub--menu__link">No
+                                                subcategories available</a>
+                                        </li>
+                                    </ul>
+                                    @endif
                                 </li>
+                                @endif
+
                                 @endforeach
+
 
 
                                 {{-- <li class="header__menu--items mega__menu--items style2">
@@ -590,6 +652,54 @@
                                                 class="header__sub--menu__link">Home Three</a></li>
                                     </ul> --}}
                                 </li>
+                                {{-- @foreach ($categories as $categorie)
+                                <li class="header__menu--items style2">
+                                    <a class="header__menu--link @if($categorie->highlight == 'Yes') highlighted @endif"
+                                        href="{{ route('shop.page.find.categorie', ['catName' => $categorie->url_link ]) }}">
+                                        {{ $categorie->name }}
+                                    </a>
+                                </li>
+                                @endforeach --}}
+                                @foreach ($categories as $categorie)
+                                {{-- Check if the category should be shown in the navbar --}}
+                                @if($categorie->in_navbar === "Yes")
+                                <li class="header__menu--items">
+                                    <a class="header__menu--link @if($categorie->highlight == 'Yes') highlighted @endif"
+                                        href="{{ route('shop.page.find.categorie', ['catName' => $categorie->url_link ]) }}">
+                                        {{ $categorie->name }}
+                                        <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12"
+                                            height="7.41" viewBox="0 0 12 7.41">
+                                            <path d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z"
+                                                transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7" />
+                                        </svg>
+                                    </a>
+
+                                    {{-- Check if the category has subcategories --}}
+                                    @if($categorie->subcategories && $categorie->subcategories->isNotEmpty())
+                                    <ul class="header__sub--menu">
+                                        @foreach($categorie->subcategories as $subcategory)
+                                        <li class="header__sub--menu__items">
+                                            <a href="{{ route('shop.page.find.subcategorie', ['subCate' => $subcategory->name ]) }}"
+                                                class="header__sub--menu__link">
+                                                {{ $subcategory->name }}
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                    @else
+                                    <ul class="header__sub--menu">
+                                        <li class="header__sub--menu__items">
+                                            <a href="javascript:void(0);" class="header__sub--menu__link">No
+                                                subcategories available</a>
+                                        </li>
+                                    </ul>
+                                    @endif
+                                </li>
+                                @endif
+                                @endforeach
+
+
+
                                 {{-- <li class="header__menu--items mega__menu--items"> --}}
                                     {{-- <a class="header__menu--link" href="{{ route('shop.page') }}">Shop
                                         <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12"
@@ -703,14 +813,14 @@
                                                 class="header__sub--menu__link">Blog Right Sidebar</a></li>
                                     </ul>
                                 </li> --}}
-                                @foreach ($categories as $categorie )
+                                {{-- @foreach ($categories as $categorie )
                                 <li class="header__menu--items d-none d-xl-block">
                                     <a class="header__menu--link  @if($categorie->highlight == 'Yes') highlighted @endif"
                                         href="{{ route('shop.page.find.categorie',['catName'=> $categorie->url_link ])
                                         }}">{{
                                         $categorie->name }}</a>
                                 </li>
-                                @endforeach
+                                @endforeach --}}
 
                                 {{-- <li class="header__menu--items">
                                     <a class="header__menu--link" href="#">Pages
@@ -764,23 +874,47 @@
                     <ul class="offcanvas__menu_ul">
                         <li class="offcanvas__menu_li">
                             <a class="offcanvas__menu_item" href="{{ route('home.page') }}">Home</a>
-                            {{-- <ul class="offcanvas__sub_menu">
+                            <ul class="offcanvas__sub_menu">
                                 <li class="offcanvas__sub_menu_li"><a href="{{ route('home.page') }}"
                                         class="offcanvas__sub_menu_item">Home One</a></li>
                                 <li class="offcanvas__sub_menu_li"><a href="index-2.html"
                                         class="offcanvas__sub_menu_item">Home Two</a></li>
                                 <li class="offcanvas__sub_menu_li"><a href="index-3.html"
                                         class="offcanvas__sub_menu_item">Home Three</a></li>
-                            </ul> --}}
+                            </ul>
                         </li>
-                        @foreach ($categories as $categorie )
+                        @foreach ($categories as $categorie)
+    @if($categorie->in_navbar === "Yes")
+        <li class="offcanvas__menu_li">
+            <a class="offcanvas__menu_item @if($categorie->highlight == 'Yes') highlighted @endif"
+                href="{{ route('shop.page.find.categorie', ['catName' => $categorie->url_link ]) }}">
+                {{ $categorie->name }}
+            
+            </a>
 
-                        <li class="offcanvas__menu_ul">
-                            <a class="offcanvas__menu_item  @if($categorie->highlight == 'Yes') highlighted @endif"
-                                href="{{ route('shop.page.find.categorie',['catName'=> $categorie->url_link ]) }}">{{
-                                $categorie->name }}</a>
+            @if($categorie->subcategories && $categorie->subcategories->isNotEmpty())
+                <ul class="offcanvas__sub_menu">
+                    @foreach($categorie->subcategories as $subcategory)
+                        <li class="offcanvas__sub_menu_li">
+                            <a href="{{ route('shop.page.find.subcategorie', ['subCate' => $subcategory->name ]) }}"
+                               class="offcanvas__sub_menu_item">
+                                {{ $subcategory->name }}
+                            </a>
                         </li>
-                        @endforeach
+                    @endforeach
+                </ul>
+            @else
+                <ul class="offcanvas__sub_menu">
+                    <li class="offcanvas__sub_menu_li">
+                        <a href="javascript:void(0);" class="offcanvas__sub_menu_item">No subcategories available</a>
+                    </li>
+                </ul>
+            @endif
+        </li>
+    @endif
+@endforeach
+
+
                         {{-- <li class="offcanvas__menu_li">
                             <a class="offcanvas__menu_item" href="#">Shop</a> --}}
                             {{-- <ul class="offcanvas__sub_menu">
@@ -1116,9 +1250,10 @@
         <div class="predictive__search--box ">
             <div class="predictive__search--box__inner">
                 <h2 class="predictive__search--title">Search Products</h2>
-                <form class="predictive__search--form" action="#">
+                <form class="predictive__search--form" action="{{ route('search.products.post') }}" method="POST">
+                    @csrf
                     <label>
-                        <input class="predictive__search--input" placeholder="Search Here" type="text">
+                        <input class="predictive__search--input" placeholder="Search Here" type="text" name="name">
                     </label>
                     <button class="predictive__search--button" aria-label="search button" type="submit"><svg
                             class="header__search--button__svg" xmlns="http://www.w3.org/2000/svg" width="30.51"

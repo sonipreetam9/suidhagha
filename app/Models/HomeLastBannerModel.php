@@ -13,5 +13,10 @@ class HomeLastBannerModel extends Model
         'image',
         'title',
         'discount',
+        'category_id',
     ];
+    public function category()
+    {
+        return $this->belongsTo(CategorieModel::class, 'category_id');
+    }
 }

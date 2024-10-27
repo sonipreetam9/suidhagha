@@ -13,6 +13,8 @@
     <link rel="icon" href="{{ asset('adm/images/favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('adm/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('adm/css/plugins/style.css') }}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body class="">
@@ -37,6 +39,8 @@
                             <li><a href="{{ route('adm.all.brands.page') }}">All Brands</a></li>
                             <li><a href="{{ route('adm.add.product.page') }}">Add Product</a></li>
                             <li><a href="{{ route('adm.all.products.page') }}">All Product</a></li>
+                            <li><a href="{{ route('adm.add.sub.category.page') }}">Add Sub-Category</a></li>
+                            <li><a href="{{ route('adm.all.sub.category.page') }}">All Sub-Category</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

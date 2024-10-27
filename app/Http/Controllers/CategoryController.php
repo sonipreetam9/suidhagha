@@ -20,7 +20,7 @@ class CategoryController extends Controller
             'image' => 'required|file|mimes:jpeg,png,jpg,webp',
             'name' => 'required',
             'seq' => 'required',
-
+            'type'=>'required',
         ]);
         if ($vaild) {
             $file = $request->file('image');
@@ -33,6 +33,8 @@ class CategoryController extends Controller
                 'seq' => $request->seq,
                 'highlight' => $request->highlight,
                 'url_link'=>$modifiedString,
+                'in_navbar'=>$request->in_navbar,
+                'type'=>$request->type
             ]);
             return redirect()->back()->with('success', 'Categroy Added successfully.');
         } else {
@@ -64,6 +66,7 @@ class CategoryController extends Controller
         $modifiedString = str_replace(' ', '-', $originalString);
         $request->validate([
             'image' => 'file|mimes:jpeg,png,jpg,webp',
+            'type'=>'required',
         ]);
 
         $categorie = CategorieModel::find($id);
@@ -88,7 +91,9 @@ class CategoryController extends Controller
         $categorie->name = $request->name;
         $categorie->seq = $request->seq;
         $categorie->highlight = $request->highlight;
+        $categorie->in_navbar = $request->in_navbar;
         $categorie->url_link=$modifiedString;
+        $categorie->type=$request->type;
         $categorie->save();
 
 

@@ -9,5 +9,9 @@ class HomeMainBannerModel extends Model
 {
     use HasFactory;
     protected $table = 'home_main_banner';
-    protected $fillable = ['title','sub_title','image','paragraph'] ;
+    protected $fillable = ['title','sub_title','image','paragraph','category_id'] ;
+    public function category()
+    {
+        return $this->belongsTo(CategorieModel::class, 'category_id');
+    }
 }

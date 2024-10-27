@@ -3,7 +3,7 @@
 <main class="main__content_wrapper">
 
     <!-- Start breadcrumb section -->
-    <section class="breadcrumb__section breadcrumb__bg">
+    {{-- <section class="breadcrumb__section breadcrumb__bg">
         <div class="container">
             <div class="row row-cols-1">
                 <div class="col">
@@ -12,13 +12,14 @@
                         <ul class="breadcrumb__content--menu d-flex justify-content-center">
                             <li class="breadcrumb__content--menu__items"><a class="text-white"
                                     href="{{ route('home.page') }}">Home</a></li>
-                            <li class="breadcrumb__content--menu__items"><span class="text-white">Our Products</span></li>
+                            <li class="breadcrumb__content--menu__items"><span class="text-white">Our Products</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- End breadcrumb section -->
 
     <!-- Start shop section -->
@@ -48,18 +49,36 @@
                             <form class="price__filter--form" action="{{ route('product.filter.post') }}" method="POST">
                                 @csrf
                                 <ul class="widget__form--check">
-                                    @foreach ($allcategories as $allcategorie )
+                                    <ul class="widget__form--check">
+                                        @if(!empty($subcategories) && $subcategories->isNotEmpty())
+                                            @foreach ($subcategories as $subcategory)
+                                                <li class="widget__form--check__list">
+                                                    <label class="widget__form--check__label" for="subcategory-{{ $subcategory->name }}">
+                                                        {{ $subcategory->name }}
+                                                    </label>
+                                                    <input class="widget__form--check__input" id="subcategory-{{ $subcategory->name }}"
+                                                           type="checkbox" value="{{ $subcategory->id }}" name="subcategories[]">
+                                                    <span class="widget__form--checkmark"></span>
+                                                </li>
+                                            @endforeach
+                                        @elseif(!empty($allcategories) && $allcategories->isNotEmpty())
+                                            @foreach ($allcategories as $allcategorie)
+                                                <li class="widget__form--check__list">
+                                                    <label class="widget__form--check__label" for="{{ $allcategorie->name }}">
+                                                        {{ $allcategorie->name }}
+                                                    </label>
+                                                    <input class="widget__form--check__input" id="{{ $allcategorie->name }}"
+                                                           type="checkbox" value="{{ $allcategorie->id }}" name="categories[]">
+                                                    <span class="widget__form--checkmark"></span>
+                                                </li>
+                                            @endforeach
+                                        @else
+                                            <p>No categories or subcategories available.</p>
+                                        @endif
+                                    </ul>
 
 
-                                    <li class="widget__form--check__list">
-                                        <label class="widget__form--check__label" for="{{ $allcategorie->name }}">{{
-                                            $allcategorie->name }}</label>
-                                        <input class="widget__form--check__input" id="{{ $allcategorie->name }}"
-                                            type="checkbox" value="{{ $allcategorie->id }}" name="categories[]">
-                                        <span class="widget__form--checkmark"></span>
-                                    </li>
 
-                                    @endforeach
 
                                 </ul>
                         </div>
@@ -189,7 +208,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="product_list" class="tab_pane">
+                            {{-- <div id="product_list" class="tab_pane">
                                 <div class="product__section--inner">
                                     <div class="row row-cols-1 mb--n30">
 
@@ -297,9 +316,9 @@
                                         @endforeach
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
-                        <div class="pagination__area bg__gray--color">
+                        {{-- <div class="pagination__area bg__gray--color">
                             <nav class="pagination justify-content-center">
                                 <ul class="pagination__wrapper d-flex align-items-center justify-content-center">
                                     <li class="pagination__list">
@@ -334,7 +353,7 @@
                                     <li>
                                 </ul>
                             </nav>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

@@ -69,22 +69,46 @@
                                                         <img src="{{ asset('uploads/Products Images/'.$product->image) }}"
                                                             alt="" width="200" height="200">
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <label>Select Category</label>
-                                                        <select name="category_id" class="form-control form-select"
-                                                            >
-                                                            <option value="0">Select Category</option>
-                                                            <option value="{{ $product->category_id }}" selected>{{
-                                                                $categorieName->name }}
-                                                                @foreach ($categories as $categorie )
+                                                    <!-- Category Field -->
+<div class="col-md-3">
+    <label>Select Category</label>
+    <select name="category_id" class="form-control form-select" id="category_id" required>
+        <option value="0">Select Category</option>
 
-                                                            <option value="{{ $categorie->id }}">{{ $categorie->name }}
-                                                            </option>
+        <!-- Selected category for this product -->
+        <option value="{{ $product->category_id }}" selected>{{ $categorieName->name }}</option>
 
-                                                            @endforeach
+        <!-- List all other categories -->
+        @foreach ($categories as $categorie)
+        <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
+        @endforeach
+    </select>
 
-                                                        </select>
-                                                    </div>
+    @if ($errors->has('category_id'))
+    <p class="text-danger">{{ $errors->first('category_id') }}</p>
+    @endif
+</div>
+
+<!-- Subcategory Field -->
+<div class="col-md-3">
+    <label>Select Subcategory</label>
+    <select name="sub_category_id" class="form-control form-select" id="sub_category_id" required>
+        <!-- Selected subcategory for this product -->
+        <option value="{{ $product->sub_category_id }}" selected>
+            {{ $subCategoryName ? $subCategoryName->name : 'No Subcategory' }}
+        </option>
+
+        <!-- Subcategories will be loaded dynamically based on the selected category -->
+    </select>
+
+    @if ($errors->has('sub_category_id'))
+    <p class="text-danger">{{ $errors->first('sub_category_id') }}</p>
+    @endif
+</div>
+
+
+
+
                                                     <div class="col-md-3">
                                                         <label>Select Brand</label>
                                                         <select name="brand_id" class="form-control form-select"
@@ -274,4 +298,46 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#category_id').on('change', function() {
+            var categoryId = $(this).val();
+
+            if (categoryId) {
+                $.ajax({
+                    url: '/get-subcategories/' + categoryId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log(response); // This shows {subcategories: Array(6)} in the console
+
+                        // Access the subcategories array from the response
+                        var subcategories = response.subcategories;
+
+                        // Clear the previous options
+                        $('#sub_category_id').empty();
+                        $('#sub_category_id').append('<option value="">Select Subcategory</option>');
+
+                        // If subcategories exist, append them
+                        if(subcategories.length > 0) {
+                            $.each(subcategories, function(index, subcategory) {
+                                $('#sub_category_id').append('<option value="' + subcategory.id + '">' + subcategory.name + '</option>');
+                            });
+                        } else {
+                            $('#sub_category_id').append('<option value="0">No subcategories available</option>');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error: ', error);
+                    }
+                });
+            } else {
+                // If no category is selected, reset the subcategory dropdown
+                $('#sub_category_id').empty();
+                $('#sub_category_id').append('<option value="">Select Subcategory</option>');
+            }
+        });
+    });
+</script>
 @include('admin.footer')

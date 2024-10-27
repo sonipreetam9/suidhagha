@@ -18,11 +18,7 @@ use App\Http\Controllers\OffersController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ForgotPasswordController;
-use App\Http\Controllers\GuestController;
-use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\TestController;
-use App\Http\Controllers\WithoutLoginCartController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
@@ -31,6 +27,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhonePayController;
+use App\Http\Controllers\SubCategoryController;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\SearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +41,34 @@ use App\Http\Controllers\PhonePayController;
 |
 */
 
+Route::get('/op', function () {
+    // Clear Route Cache
+    Artisan::call('route:clear');
+
+    // Clear Config Cache
+    Artisan::call('config:clear');
+
+    // Clear View Cache
+    Artisan::call('view:clear');
+
+    // Clear Application Cache
+    Artisan::call('cache:clear');
+
+    // Optimize Autoload
+    Artisan::call('optimize');
+
+    // Rebuild route cache, config cache, and view cache
+    Artisan::call('route:cache');
+    Artisan::call('config:cache');
+    Artisan::call('view:cache');
+    // Clear Route Cache
+    Artisan::call('route:clear');
+    return response()->json(['message' => 'Application optimized and cache cleared!']);
+})->name('api.optimize');
+
+Route::post('/shop/products/search', [SearchController::class, 'search_products'])->name('search.products.post');
+
+Route::get('/get-subcategories/{category_id}', [ProductController::class, 'getSubcategories']);
 
 Route::post('/test-req', [TestController::class, 'test_req'])->name('test.req');
 Route::get('/', [HomeController::class, 'home_page'])->name('home');
@@ -72,6 +99,7 @@ Route::post('/admin/login', [AdminControler::class, 'login'])->name('adm.login')
 Route::post('/filter/products', [FilterController::class, 'filtering_products'])->name('product.filter.post');
 
 
+Route::get('/collection/{subCate}', [HomeController::class, 'find_by_sub_categorie'])->name('shop.page.find.subcategorie');
 
 
 
@@ -178,5 +206,12 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/admin/add-clients-review', [ClientController::class, 'add_clients_reivew'])->name('adm.add.client.review');
     Route::get('/admin/update-product/{id}', [ProductController::class, 'update_product'])->name('adm.update.product');
     Route::post('/admin/update-product/{id}', [ProductController::class, 'update_product_post'])->name('adm.update.product.post');
+
+
+    Route::get('add-sub-category', [SubCategoryController::class, 'add_sub_categoty_page'])->name('adm.add.sub.category.page');
+    Route::post('add-sub-category', [SubCategoryController::class, 'add_sub_category'])->name('adm.add.sub.category');
+    Route::get('all-sub-category-list', [SubCategoryController::class, 'all_sub_categoty_page'])->name('adm.all.sub.category.page');
+    Route::post('update-sub-category/{id}', [SubCategoryController::class, 'update_sub_category'])->name('adm.sub.update.category');
+    Route::post('del-sub-category/{id}', [SubCategoryController::class, 'delete_sub_category'])->name('adm.del.sub.category');
 
 });

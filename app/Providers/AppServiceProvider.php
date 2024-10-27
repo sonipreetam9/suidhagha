@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
         $comp_mobile1="+91 90900-99999";
         $comp_email="suidhaga@gmail.com";
         $comp_email1="newsuidhaga@gmail.com";
-        $comp_address="Sirsa,Haryana 125055";
+        $comp_address="AHMEDABAD GUJARAT 382213";
         view()->share('comp_name',$comp_name);
         view()->share('comp_mobile', $comp_mobile);
         view()->share('comp_mobile1', $comp_mobile1);
@@ -33,7 +33,8 @@ class AppServiceProvider extends ServiceProvider
         view()->share('comp_email1', $comp_email1);
         view()->share('comp_address', $comp_address);
         view()->share('comp_webtitle', $comp_webtitle);
-        $categories = CategorieModel::orderBy("seq", "asc")->get();
+        $categories = CategorieModel::with('subcategories')->get();
+
         view()->share('categories', $categories);
     }
 }

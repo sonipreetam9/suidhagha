@@ -87,6 +87,21 @@
                                                         <option value="Yes">Yes</option>
                                                     </select>
                                                 </div>
+                                                <div class="col-md-4">
+                                                    <label for="Navbar" class="form-label">In Navbar</label>
+                                                    <select class="form-control" name="in_navbar" id="Navbar">
+                                                        <option value="Yes" selected>Yes</option>
+                                                        <option value="No" >No</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="Navbar" class="form-label">Type</label>
+                                                    <select class="form-control" name="type" id="Navbar">
+                                                        <option value="Nothing" selected>Nothing</option>
+                                                        <option value="Darbar" >Darbar</option>
+                                                        <option value="Big Reveal">Big Reveal</option>
+                                                    </select>
+                                                </div>
 
 
                                                 <div class="col-md-12">

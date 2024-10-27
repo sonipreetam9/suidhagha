@@ -59,6 +59,7 @@
                                                         <th>Photo</th>
                                                         <th>Seq</th>
                                                         <th>Highlight</th>
+                                                        <th>In Navbar</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -83,6 +84,7 @@
                                                         </td>
                                                         <td>{{ $category->seq }}</td>
                                                         <td>{{ $category->highlight }}</td>
+                                                        <td>{{ $category->in_navbar }}</td>
 
                                                         <td>
                                                             <button type="button" class="btn btn-sm btn-primary"
@@ -162,8 +164,34 @@
                                                                                             </select>
                                                                                         </div>
                                                                                     </div>
+                                                                                    <div class="col-md-12 col-xs-12">
+                                                                                        <div class="form-group">
+                                                                                            <label for="in_navbar"
+                                                                                                class="form-label">In Navbar</label>
+                                                                                            <select class="form-control"
+                                                                                                name="in_navbar"
+                                                                                                id="in_navbar">
+                                                                                                <option value="{{ $category->in_navbar }}" selected>{{ $category->in_navbar }}</option>
+                                                                                                <option value="No"
+                                                                                                    >No</option>
+                                                                                                <option value="Yes">Yes
+                                                                                                </option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
 
+                                                                                    <div class="col-md-12 col-xs-12 mb-2">
+                                                                                        <label for="Navbar" class="form-label">Type</label>
+                                                                                        <select class="form-control" name="type" id="Navbar">
+                                                                                            @if($category->type)
+                                                                                            <option value="{{ $category->type }}" selected>{{ $category->type }}</option>
 
+                                                                                            @endif
+                                                                                            <option value="Nothing" selected>Nothing</option>
+                                                                                            <option value="Darbar" >Darbar</option>
+                                                                                            <option value="Big Reveal">Big Reveal</option>
+                                                                                        </select>
+                                                                                    </div>
                                                                                     <div class="col-md-6 col-xs-6">
                                                                                         <input type="submit"
                                                                                             class="btn btn-success"

@@ -8,9 +8,14 @@ use App\Models\BrandModel;
 use App\Models\CategorieModel;
 use App\Models\ProductSizeModel;
 use Illuminate\Support\Facades\Validator;
-
+use App\Models\SubCategoryModel;
 class ProductController extends Controller
 {
+    public function getSubcategories($category_id)
+    {
+        $subcategories = SubCategoryModel::where('category_id', $category_id)->get();
+        return response()->json(['subcategories' => $subcategories]);
+    }
     public function product_detail_page($id){
         $product=ProductModel::findOrFail($id);
         $sizes=$product->sizes;
@@ -31,10 +36,10 @@ class ProductController extends Controller
     }
     public function add_products_page()
     {
-        $categories = CategorieModel::orderBy("id", "desc")->get();
+        // $categories = CategorieModel::orderBy("id", "desc")->get();
         $brands = BrandModel::orderBy("id", "desc")->get();
 
-        return view("admin.add_product", compact('categories', 'brands'));
+        return view("admin.add_product", compact( 'brands'));
     }
     public function add_products(Request $request)
     {
@@ -51,6 +56,7 @@ class ProductController extends Controller
             'color' => 'required',
             'about1' => 'required',
             'discounted_price' => 'required|numeric',
+            'sub_category_id'=>'required|numeric',
         ]);
 
 
@@ -63,6 +69,7 @@ class ProductController extends Controller
         // Handle product_image separately
         $productImage = $request->file('product_image');
         $productImageName = $productImage->getClientOriginalName();
+        $productImageName = now()->timestamp . '_' . $productImageName;
         $productImage->move(public_path($targetDirectory), $productImageName);
 
         // Handle additional product images if provided
@@ -73,6 +80,7 @@ class ProductController extends Controller
             if ($request->hasFile($fileInputName)) {
                 $additionalImage = $request->file($fileInputName);
                 $additionalImageName = $additionalImage->getClientOriginalName();
+                $productImageName = now()->timestamp . '_' . $productImageName;
                 $additionalImage->move(public_path($targetDirectory), $additionalImageName);
                 $additionalImages[] = $additionalImageName;
             }
@@ -94,6 +102,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->discounted_price = $request->discounted_price;
         $product->about1 = $request->about1;
+        $product->sub_category_id = $request->sub_category_id;
         $product->save();
         if($request->size){
             $new = $request->size;
@@ -121,12 +130,13 @@ class ProductController extends Controller
         if($sizes->count() < 0){
             $sizes=null;
         }
-        $categories = CategorieModel::orderBy("id", "desc")->get();
+        // $categories = CategorieModel::with('subcategories')->orderBy("id", "desc")->get();
         $brands = BrandModel::orderBy("id", "desc")->get();
         $product=ProductModel::findOrFail($id);
         $brandName=BrandModel::where('id',$product->brand_id)->first();
         $categorieName=CategorieModel::where('id', $product->category_id)->first();
-        return view('admin.update_product', compact('product','categories','brands','brandName','categorieName','sizes'));
+        $subCategoryName = SubcategoryModel::find($product->sub_category_id);
+        return view('admin.update_product', compact('product','brands','brandName','categorieName','sizes','subCategoryName'));
     }
     public function update_product_post(Request $request, $id){
         $validator = Validator::make($request->all(), [
@@ -142,6 +152,7 @@ class ProductController extends Controller
             'color' => 'required',
             'about1' => 'required',
             'discounted_price' => 'required|numeric',
+            'sub_category_id'=>'required|numeric',
         ]);
 
         if ($validator->fails()) {
@@ -155,12 +166,7 @@ class ProductController extends Controller
         if ($request->hasFile('product_image')) {
             $productImage = $request->file('product_image');
             $productImageName = $productImage->getClientOriginalName();
-
-            // Unlink existing image if exists
-            if (file_exists(public_path($targetDirectory . $product->image))) {
-                unlink(public_path($targetDirectory . $product->image));
-            }
-
+            $productImageName = now()->timestamp . '_' . $productImageName;
             $productImage->move(public_path($targetDirectory), $productImageName);
             $product->image = $productImageName;
         }
@@ -176,9 +182,7 @@ class ProductController extends Controller
 
                 // Unlink existing image if exists
                 $imageField = 'image' . $i;
-                if (file_exists(public_path($targetDirectory . $product->$imageField))) {
-                    unlink(public_path($targetDirectory . $product->$imageField));
-                }
+
 
                 $additionalImage->move(public_path($targetDirectory), $additionalImageName);
                 $product->$imageField = $additionalImageName;
@@ -193,6 +197,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->discounted_price = $request->discounted_price;
         $product->about1 = $request->about1;
+        $product->sub_category_id = $request->sub_category_id;
         $product->save();
 
         // Update product sizes

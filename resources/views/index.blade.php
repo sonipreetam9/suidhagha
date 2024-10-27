@@ -1,5 +1,12 @@
 @extends('layouts.header')
 @section('content')
+<style>
+    .product__items--img {
+        /* height: 400px;
+        width: 100%;
+        object-fit: cover; */
+    }
+</style>
 {{-- <div class="cr-wish-notify " id="wishNotification">
     <p class="wish-note">Add product in <a href="#"> Cart </a> Successfully!</p>
 </div> --}}
@@ -10,24 +17,26 @@
             <div class="hero__slider--wrapper swiper-wrapper">
                 @foreach ($banner as $banners)
 
-                <div class="swiper-slide ">
-                    <div class="hero__slider--items home1__slider--bg" style="background: url('{{ asset('uploads/Main Bannner/' . $banners->image) }}');
+                <div class="swiper-slide "><a
+                        href="{{ route('shop.page.find.categorie', ['catName' => $banners->category->url_link]) }}">
+                        <div class="hero__slider--items home1__slider--bg" style="background: url('{{ asset('uploads/Main Bannner/' . $banners->image) }}');
                     background-repeat: no-repeat;
-                    background-attachment: scroll;
+                    background-attachment: ;
                     height:100vh;
                     width:100vw;
                     background-position: center center;
                     background-size: cover;">
-                        <div class="container-fluid">
-                            <div class="hero__slider--items__inner">
-                                <div class="row row-cols-1">
-                                    <div class="col">
+                            <div class="container-fluid">
+                                <div class="hero__slider--items__inner">
+                                    <div class="row row-cols-1">
+                                        <div class="col">
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 @endforeach
@@ -40,8 +49,49 @@
     </section>
     <!-- End slider section -->
 
+
+
+
+
+    <!-- Start blog section -->
+    <section class="blog__section section--padding p-5">
+        <div class="container-fluid">
+            <div class="blog__section--inner blog__swiper--activation swiper">
+                <div class="swiper-wrapper">
+                    @foreach ($categories as $categorie )
+                    @if($categorie->type === "Big Reveal")
+
+                    <div class="swiper-slide">
+                        <div class="blog__items">
+                            <div class="blog__thumbnail">
+                                <a class="blog__thumbnail--link" href="{{ route('shop.page.find.categorie', ['catName' => $categorie->url_link]) }}"><img
+                                        class="blog__thumbnail--img"
+                                        src="{{ asset('uploads/Category Images/'.$categorie->image)}}"
+                                        alt="blog-img"></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    @endif
+
+                    @endforeach
+
+                </div>
+                <div class="swiper__nav--btn swiper-button-next"></div>
+                <div class="swiper__nav--btn swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+    <!-- End blog section -->
+
+
+
+
+
+
+
     <!-- Start banner section -->
-    <section class="banner__section section--padding">
+    <section class="banner__section pt-5 pb-2">
         <div class="container-fluid">
             <div class="row mb--n28">
                 {{-- <div class="col-lg-5 col-md-order mb-28">
@@ -69,7 +119,7 @@
                     <div class="row row-cols-lg-3 row-cols-sm-3 row-cols-3">
                         @foreach ($categories as $categorie)
 
-
+                        @if($categorie->type === "Nothing")
                         <div class="col-6 col-md-4 mb-28">
                             <div class="banner__items ">
                                 <a class="banner__items--thumbnail position__relative"
@@ -80,6 +130,7 @@
                                 </a>
                             </div>
                         </div>
+                        @endif
                         @endforeach
 
                     </div>
@@ -91,19 +142,12 @@
     <!-- End banner section -->
 
     <!-- Start product section -->
-    <section class="product__section section--padding pt-0">
+    <section class="product__section p-4">
         <div class="container-fluid">
             <div class="section__heading text-center mb-35">
                 <h2 class="section__heading--maintitle">New Products</h2>
             </div>
-            <ul class="product__tab--one product__tab--primary__btn d-flex justify-content-center mb-50">
-                <li class="product__tab--primary__btn__list active" data-toggle="tab" data-target="#featured">Featured
-                </li>
-                {{-- <li class="product__tab--primary__btn__list" data-toggle="tab" data-target="#trending">Trending
-                </li>
-                <li class="product__tab--primary__btn__list" data-toggle="tab" data-target="#newarrival">New Arrival
-                </li> --}}
-            </ul>
+
             <div class="tab_content">
                 <div id="featured" class="tab_pane active show">
                     <div class="product__section--inner">
@@ -117,17 +161,21 @@
                                             href="{{ route('product.detail.page',['id'=>$items->id]) }}">
                                             <img class="product__items--img product__primary--img"
                                                 src="{{ asset('uploads/Products Images/'.$items->image) }}"
-                                                alt="product-img" style="height: 280px">
+                                                alt="product-img">
                                             <img class="product__items--img product__secondary--img"
                                                 src="{{ asset('uploads/Products Images/'.$items->image2) }}"
-                                                alt="product-img" style="height: 280px">
+                                                alt="product-img">
                                         </a>
                                         <div class="product__badge">
                                             <span class="product__badge--items sale">Sale</span>
                                         </div>
                                     </div>
                                     <div class="product__items--content">
-                                        <span class="product__items--content__subtitle">Jacket, Women</span>
+                                        <span class="product__items--content__subtitle">
+                                            {{ $items->category->name ?? 'No Category' }} -
+                                            {{ $items->subcategory->name ?? 'No Subcategory' }}
+                                        </span>
+
                                         <h3 class="product__items--content__title h4"><a
                                                 href="{{ route('product.detail.page',['id'=>$items->id]) }}">{{
                                                 $items->name }}</a></h3>
@@ -225,27 +273,36 @@
     <!-- End product section -->
 
     <!-- Start deals banner section -->
+    <a href="{{ route('shop.page.find.categorie', ['catName' => $midbanners->category->url_link]) }}"
+        style="width: 100%">
+        <section class="deals__banner--section  p-4">
+            <div class="container-fluid">
 
-    <section class="deals__banner--section section--padding pt-0">
-        <div class="container-fluid">
-            <div class="deals__banner--inner banner__bg"
-                style="background: url('{{ asset('uploads/Middle Bannner/' . $midbanners->image) }}'); ">
-                <div class="row row-cols-1 align-items-center">
-                    <div class="col" style="height: 500px">
-                        <div class="deals__banner--content position__relative">
-                            {{-- content --}}
+                <div class="deals__banner--inner banner__bg" style="background: url('{{ asset('uploads/Middle Banner/' . $midbanners->image) }}');  background-repeat: no-repeat;
 
+                    background-position: center center;
+                    background-size: contain;">
+
+
+                    <div class="row row-cols-1 align-items-center">
+                        <div class="col" style="height: 500px">
+                            <div class="deals__banner--content position__relative">
+                                {{-- content --}}
+
+                            </div>
                         </div>
                     </div>
+
                 </div>
+
             </div>
-        </div>
-    </section>
+        </section>
+    </a>
     <!-- End deals banner section -->
 
     <!-- Start product section -->
     @foreach ($sections as $currentSection)
-    <section class="product__section section--padding pt-0">
+    <section class="product__section pt-4">
         <div class="container-fluid">
             @if (is_object($currentSection))
             <div class="section__heading text-center mb-50">
@@ -261,11 +318,10 @@
                                 <a class="produSct__items--link"
                                     href="{{ route('product.detail.page',['id'=>$product->id]) }}">
                                     <img class="product__items--img product__primary--img"
-                                        src="{{ asset('uploads/Products Images/'.$product->image) }}" alt="product-img"
-                                        style="height: 280px">
+                                        src="{{ asset('uploads/Products Images/'.$product->image) }}" alt="product-img">
                                     <img class="product__items--img product__secondary--img"
-                                        src="{{ asset('uploads/Products Images/'.$product->image2) }}" alt="product-img"
-                                        style="height: 280px">
+                                        src="{{ asset('uploads/Products Images/'.$product->image2) }}"
+                                        alt="product-img">
                                 </a>
                                 <div class="product__badge">
                                     <span class="product__badge--items sale">Sale</span>
@@ -385,7 +441,8 @@
                         <div class="testimonial__items text-center">
                             <div class="testimonial__items--thumbnail">
                                 <img class="testimonial__items--thumbnail__img border-radius-50"
-                                    src="{{ asset('uploads/Client Images/'.$review->image) }}" alt="testimonial-img"  style="border-radius: 50%;height:70px;width:70px;">
+                                    src="{{ asset('uploads/Client Images/'.$review->image) }}" alt="testimonial-img"
+                                    style="border-radius: 50%;height:70px;width:70px;">
                             </div>
                             <div class="testimonial__items--content">
                                 <h3 class="testimonial__items--title">{{ $review->name }}</h3>
@@ -405,7 +462,7 @@
                                                 </svg>
                                             </span>
                                         </li>
-                                    @endfor
+                                        @endfor
 
 
 
@@ -430,9 +487,10 @@
             <div class="row row-cols-1">
                 <div class="col">
                     <div class="banner__section--inner position__relative">
-                        <a class="banner__items--thumbnail display-block" href="#"><img
+                        <a class="banner__items--thumbnail display-block"
+                            href="{{ route('shop.page.find.categorie', ['catName' => $lastbanners->category->url_link]) }}"><img
                                 class="banner__items--thumbnail__img banner__img--height__md display-block"
-                                src="{{ asset('uploads/Last Bannner/'.$lastbanners->image) }}" alt="banner-img"
+                                src="{{ asset('uploads/Last Banner/'.$lastbanners->image) }}" alt="banner-img"
                                 style="width: 100%">
                             {{-- <div class="banner__content--style2">
                                 <h2 class="banner__content--style2__title text-white">Need Winter Boots? </h2>
@@ -467,74 +525,74 @@
                     <div class="swiper-slide">
                         <div class="blog__items">
                             <div class="blog__thumbnail">
-                                <a class="blog__thumbnail--link" href="blog-details.html"><img
+                                <a class="blog__thumbnail--link" href="#"><img
                                         class="blog__thumbnail--img" src="assets/img/blog/blog1.png" alt="blog-img"></a>
                             </div>
                             <div class="blog__content">
                                 <span class="blog__content--meta">February 03, 2022</span>
-                                <h3 class="blog__content--title"><a href="blog-details.html">Fashion Trends In 2021
+                                <h3 class="blog__content--title"><a href="#">Fashion Trends In 2021
                                         Styles,
                                         Colors, Accessories</a></h3>
-                                <a class="blog__content--btn primary__btn" href="blog-details.html">Read more </a>
+                                <a class="blog__content--btn primary__btn" href="#">Read more </a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="blog__items">
                             <div class="blog__thumbnail">
-                                <a class="blog__thumbnail--link" href="blog-details.html"><img
+                                <a class="blog__thumbnail--link" href="#"><img
                                         class="blog__thumbnail--img" src="assets/img/blog/blog2.png" alt="blog-img"></a>
                             </div>
                             <div class="blog__content">
                                 <span class="blog__content--meta">February 03, 2022</span>
-                                <h3 class="blog__content--title"><a href="blog-details.html">Meet the Woman Behind Cool
+                                <h3 class="blog__content--title"><a href="#">Meet the Woman Behind Cool
                                         Ethical Label Refor </a></h3>
-                                <a class="blog__content--btn primary__btn" href="blog-details.html">Read more </a>
+                                <a class="blog__content--btn primary__btn" href="#">Read more </a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="blog__items">
                             <div class="blog__thumbnail">
-                                <a class="blog__thumbnail--link" href="blog-details.html"><img
+                                <a class="blog__thumbnail--link" href="#"><img
                                         class="blog__thumbnail--img" src="assets/img/blog/blog3.png" alt="blog-img"></a>
                             </div>
                             <div class="blog__content">
                                 <span class="blog__content--meta">February 03, 2022</span>
-                                <h3 class="blog__content--title"><a href="blog-details.html">Lauryn Hill Could Make
+                                <h3 class="blog__content--title"><a href="#">Lauryn Hill Could Make
                                         Tulle
                                         Skirt and Cowboy</a></h3>
-                                <a class="blog__content--btn primary__btn" href="blog-details.html">Read more </a>
+                                <a class="blog__content--btn primary__btn" href="#">Read more </a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="blog__items">
                             <div class="blog__thumbnail">
-                                <a class="blog__thumbnail--link" href="blog-details.html"><img
+                                <a class="blog__thumbnail--link" href="#"><img
                                         class="blog__thumbnail--img" src="assets/img/blog/blog4.png" alt="blog-img"></a>
                             </div>
                             <div class="blog__content">
                                 <span class="blog__content--meta">February 03, 2022</span>
-                                <h3 class="blog__content--title"><a href="blog-details.html">Fashion Trends In 2021
+                                <h3 class="blog__content--title"><a href="#">Fashion Trends In 2021
                                         Styles,
                                         Colors, Accessories</a></h3>
-                                <a class="blog__content--btn primary__btn" href="blog-details.html">Read more </a>
+                                <a class="blog__content--btn primary__btn" href="#">Read more </a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="blog__items">
                             <div class="blog__thumbnail">
-                                <a class="blog__thumbnail--link" href="blog-details.html"><img
+                                <a class="blog__thumbnail--link" href="#"><img
                                         class="blog__thumbnail--img" src="assets/img/blog/blog2.png" alt="blog-img"></a>
                             </div>
                             <div class="blog__content">
                                 <span class="blog__content--meta">February 03, 2022</span>
-                                <h3 class="blog__content--title"><a href="blog-details.html">Lauryn Hill Could Make
+                                <h3 class="blog__content--title"><a href="#">Lauryn Hill Could Make
                                         Tulle
                                         Skirt and Cowboy</a></h3>
-                                <a class="blog__content--btn primary__btn" href="blog-details.html">Read more </a>
+                                <a class="blog__content--btn primary__btn" href="#">Read more </a>
                             </div>
                         </div>
                     </div>
@@ -545,6 +603,35 @@
         </div>
     </section> --}}
     <!-- End blog section -->
+<!-- Start blog section -->
+<section class="blog__section section--padding p-5">
+    <div class="container-fluid">
+        <div class="blog__section--inner blog__swiper--activation swiper">
+            <div class="swiper-wrapper">
+                @foreach ($categories as $categorie )
+                @if($categorie->type === "Darbar")
+
+                <div class="swiper-slide">
+                    <div class="blog__items">
+                        <div class="blog__thumbnail">
+                            <a class="blog__thumbnail--link" href="{{ route('shop.page.find.categorie', ['catName' => $categorie->url_link]) }}"><img
+                                    class="blog__thumbnail--img"
+                                    src="{{ asset('uploads/Category Images/'.$categorie->image)}}"
+                                    alt="blog-img"></a>
+                        </div>
+
+                    </div>
+                </div>
+                @endif
+                @endforeach
+
+            </div>
+            <div class="swiper__nav--btn swiper-button-next"></div>
+            <div class="swiper__nav--btn swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+<!-- End blog section -->
 
 </main>
 

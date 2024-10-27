@@ -14,5 +14,10 @@ class HomeMiddleBannerModel extends Model
         'discount',
         'title',
         'sub_title',
+        'category_id',
     ] ;
+    public function category()
+    {
+        return $this->belongsTo(CategorieModel::class, 'category_id');
+    }
 }

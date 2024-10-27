@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SubCategoryModel;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -25,15 +26,15 @@ class HomeController extends Controller
     public function home_page()
     {
         $sections = SectionModel::with('products')->get();
-        $item = ProductModel::orderBy("id", "desc")->get();
+        $item = ProductModel::with('category')->with('subcategory')->orderBy("id", "desc")->get();
         $count = 0;
         if ($sections->isNotEmpty()) {
             $blog = BlogModel::orderBy("id", "desc")->paginate(4);
             $newbrand = BrandModel::orderBy("id", "desc")->paginate(10);
             $reviews = ReviewModel::all();
-            $banner = HomeMainBannerModel::all();
-            $midbanners = HomeMiddleBannerModel::latest()->first();
-            $lastbanners = HomeLastBannerModel::latest()->first();
+            $banner = HomeMainBannerModel::with('category')->get();
+            $midbanners = HomeMiddleBannerModel::with('category')->latest()->first();
+            $lastbanners = HomeLastBannerModel::with('category')->latest()->first();
             $categories = CategorieModel::orderBy("seq", "asc")->get();
 
             $data = compact("blog", "item", "newbrand", "reviews", "categories", "sections", "count", "banner", "midbanners", "lastbanners");
@@ -52,16 +53,38 @@ class HomeController extends Controller
 
 
         // Decode the URL-encoded characters
-    $decodedCatName = str_replace('-', ' ', $catName);
+        $decodedCatName = str_replace('-', ' ', $catName);
 
-    // Lookup the category in the database
-    $allcategories =CategorieModel::all();
-    $categorie = CategorieModel::where("name", $decodedCatName)->first();
+        // Lookup the category in the database
+        $allcategories = CategorieModel::all();
+        $categorie = CategorieModel::where("name", $decodedCatName)->first();
         if ($categorie) {
             $products = ProductModel::where('category_id', $categorie->id)->get();
-            return view("shop", compact('products','allcategories'));
+            return view("shop", compact('products', 'allcategories'));
         } else {
             return redirect()->back()->with('error', 'Category not found');
         }
     }
+    public function find_by_sub_categorie($subCate)
+    {
+        // Decode the URL-encoded characters
+        $decodedCatName = str_replace('-', ' ', $subCate);
+
+        // Lookup the subcategory in the database
+        $subcategorie = SubCategoryModel::where("name", $decodedCatName)->first();
+
+        if ($subcategorie) {
+            // Fetch products under the subcategory
+            $products = ProductModel::where('sub_category_id', $subcategorie->id)->get();
+
+            // Fetch all subcategories (replace 'categroy_id' with actual category ID you want)
+            $subcategories = SubCategoryModel::where('category_id', $subcategorie->category_id)->get();
+
+            return view("shop", compact('products', 'subcategories'));
+        } else {
+            return redirect()->back()->with('error', 'Category not found');
+        }
+    }
+
+
 }

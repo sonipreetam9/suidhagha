@@ -49,6 +49,17 @@ $i=0;
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="form-group">
+                                                        <label class="form-label" for="ci">Select Category</label>
+                                                        <select name="category_id" id="ci" class="form-control" required>
+                                                            <option value="0">Select Category</option>
+                                                            @foreach ($categories as $cate)
+                                                            <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
                                                         <label class="form-label">Title</label>
                                                         <input class="form-control" type="text" name="title">
                                                     </div>
@@ -152,6 +163,20 @@ $i=0;
                                                                                 <input type="hidden" value="id" name="id">
                                                                                 <div class="row">
                                                                                     <div class="col-md-12 col-xs-12">
+                                                                                        <div class="form-group">
+                                                                                            <label class="form-label" for="ci">Select Category</label>
+                                                                                            <select name="category_id" id="ci" class="form-control" required>
+                                                                                                @if($list->category_id)
+                                                                                                <option selected value="{{ $list->category_id }}">{{ $list->category->name }}</option>
+                                                                                                @else
+                                                                                                <option selected value="0">Select Category</option>
+
+                                                                                                @endif
+                                                                                                @foreach ($categories as $cate)
+                                                                                                <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                        </div>
                                                                                         <div class="form-group">
                                                                                             <label for="input1" class="form-label">Title</label>
                                                                                             <input type="text" class="form-control" name="title" value="{{ $list->title }}">
