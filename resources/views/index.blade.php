@@ -12,44 +12,61 @@
 </div> --}}
 <main class="main__content_wrapper">
     <!-- Start slider section -->
-    <section class="hero__slider--section">
-        <div class="hero__slider--inner hero__slider--activation swiper">
-            <div class="hero__slider--wrapper swiper-wrapper">
-                @foreach ($banner as $banners)
-
-                <div class="swiper-slide "><a
-                        href="{{ route('shop.page.find.categorie', ['catName' => $banners->category->url_link]) }}">
-                        <div class="hero__slider--items home1__slider--bg" style="background: url('{{ asset('uploads/Main Bannner/' . $banners->image) }}');
-                    background-repeat: no-repeat;
-                    background-attachment: ;
-                    height:100vh;
-                    width:100vw;
-                    background-position: center center;
-                    background-size: cover;">
-                            <div class="container-fluid">
-                                <div class="hero__slider--items__inner">
-                                    <div class="row row-cols-1">
-                                        <div class="col">
-
-                                        </div>
+<section class="hero__slider--section">
+    <div class="hero__slider--inner hero__slider--activation swiper">
+        <div class="hero__slider--wrapper swiper-wrapper">
+            @foreach ($banner as $banners)
+            <div class="swiper-slide">
+                <a href="{{ route('shop.page.find.categorie', ['catName' => $banners->category->url_link]) }}">
+                    <div class="hero__slider--items home1__slider--bg"
+                         style="background: url('{{ asset('uploads/Main Bannner/' . $banners->image) }}');
+                                background-repeat: no-repeat;
+                                height: 100vh;
+                                width: 100vw;
+                                background-position: center center;
+                                background-size: cover;">
+                        <div class="container-fluid">
+                            <div class="hero__slider--items__inner">
+                                <div class="row row-cols-1">
+                                    <div class="col">
+                                        <!-- Add content here if needed -->
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                </div>
-
-                @endforeach
-
-
+                    </div>
+                </a>
             </div>
-            <div class="swiper__nav--btn swiper-button-next"></div>
-            <div class="swiper__nav--btn swiper-button-prev"></div>
+            @endforeach
         </div>
-    </section>
-    <!-- End slider section -->
+        <div class="swiper__nav--btn swiper-button-next"></div>
+        <div class="swiper__nav--btn swiper-button-prev"></div>
+    </div>
+</section>
+<!-- End slider section -->
 
+<!-- Responsive styles -->
+<style>
+    /* Default styles */
+    .home1__slider--bg {
+        height: 100vh;
+        background-size: cover;
+    }
 
+    /* Tablet adjustments */
+    @media (max-width: 991px) {
+        .home1__slider--bg {
+            height: 250px !important;
+        }
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 767px) {
+        .home1__slider--bg {
+            height: 250px !important;
+        }
+    }
+</style>
 
 
 
@@ -94,27 +111,6 @@
     <section class="banner__section pt-5 pb-2">
         <div class="container-fluid">
             <div class="row mb--n28">
-                {{-- <div class="col-lg-5 col-md-order mb-28">
-                    <div class="banner__items">
-                        <a class="banner__items--thumbnail position__relative" href="{{ route('shop.page') }}"><img
-                                class="banner__items--thumbnail__img" src="assets/img/banner/banner1.png"
-                                alt="banner-img">
-                            <div class="banner__items--content">
-                                <span class="banner__items--content__subtitle">17% Discount</span>
-                                <h2 class="banner__items--content__title h3">Spring Collection <br>
-                                    Style To</h2>
-                                <span class="banner__items--content__link">View Discounts
-                                    <svg class="banner__items--content__arrow--icon" xmlns="http://www.w3.org/2000/svg"
-                                        width="20.2" height="12.2" viewBox="0 0 6.2 6.2">
-                                        <path
-                                            d="M7.1,4l-.546.546L8.716,6.713H4v.775H8.716L6.554,9.654,7.1,10.2,9.233,8.067,10.2,7.1Z"
-                                            transform="translate(-4 -4)" fill="currentColor"></path>
-                                    </svg>
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div> --}}
                 <div class="col-lg-12 mb-28">
                     <div class="row row-cols-lg-3 row-cols-sm-3 row-cols-3">
                         @foreach ($categories as $categorie)
@@ -299,16 +295,21 @@
         </section>
     </a>
     <!-- End deals banner section -->
+<style>
+    .bg-yellow{
+        background-color: rgb(235, 178, 94);
+    }
+</style>
 
     <!-- Start product section -->
-    @foreach ($sections as $currentSection)
-    <section class="product__section pt-4">
+    @foreach ($sections as $index=> $currentSection)
+    <section class="product__section p-4 @if($index % 2 === 0) bg-yellow  @endif">
         <div class="container-fluid">
             @if (is_object($currentSection))
             <div class="section__heading text-center mb-50">
                 <h2 class="section__heading--maintitle">{{ $currentSection->name }}</h2>
             </div>
-            <div class="product__section--inner product__swiper--activation swiper">
+            <div class="product__section--inner product__swiper--activation swiper ">
 
                 <div class="swiper-wrapper">
                     @foreach ($currentSection->products->slice(0, 4) as $product)

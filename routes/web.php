@@ -41,6 +41,10 @@ use App\Http\Controllers\SearchController;
 |
 */
 
+Route::get('/test-nav', [FooterPageController::class, 'testing']);
+
+
+
 Route::get('/op', function () {
     // Clear Route Cache
     Artisan::call('route:clear');

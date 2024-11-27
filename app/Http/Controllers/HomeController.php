@@ -25,6 +25,7 @@ class HomeController extends Controller
 {
     public function home_page()
     {
+        $var="home";
         $sections = SectionModel::with('products')->get();
         $item = ProductModel::with('category')->with('subcategory')->orderBy("id", "desc")->get();
         $count = 0;
@@ -37,14 +38,14 @@ class HomeController extends Controller
             $lastbanners = HomeLastBannerModel::with('category')->latest()->first();
             $categories = CategorieModel::orderBy("seq", "asc")->get();
 
-            $data = compact("blog", "item", "newbrand", "reviews", "categories", "sections", "count", "banner", "midbanners", "lastbanners");
+            $data = compact("blog", "item", "newbrand", "reviews", "categories", "sections", "count", "banner", "midbanners", "lastbanners","var");
 
             return view("index", $data)->with($data);
         } else {
             $midbanners = HomeMiddleBannerModel::latest()->first();
             $lastbanners = HomeLastBannerModel::latest()->first();
             $categories = CategorieModel::orderBy("seq", "asc")->get();
-            return view("index", compact('item', 'categories', 'lastbanners', 'midbanners'));
+            return view("index", compact('item', 'categories', 'lastbanners', 'midbanners',"var"));
         }
     }
 

@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $var="";
         $comp_webtitle="Suidhagha-Shop online Ethnic Wear";
         $comp_name="Sui-Dhagha";
         $comp_mobile="+91 99999-90900";
@@ -33,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
         view()->share('comp_email1', $comp_email1);
         view()->share('comp_address', $comp_address);
         view()->share('comp_webtitle', $comp_webtitle);
+        view()->share('var', $var);
         $categories = CategorieModel::with('subcategories')->get();
 
         view()->share('categories', $categories);

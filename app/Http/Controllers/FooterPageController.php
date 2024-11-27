@@ -18,4 +18,7 @@ class FooterPageController extends Controller
     public function shipping_policy_page(){
         return view('shipping_policy');
     }
+    public function testing(){
+        return view('testing');
+    }
 }
