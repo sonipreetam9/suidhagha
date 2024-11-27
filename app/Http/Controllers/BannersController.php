@@ -20,6 +20,7 @@ class BannersController extends Controller
         $request->validate([
             'image' => 'required|file|mimes:jpeg,png,jpg,webp',
             'category_id' => 'required',
+            'type' => 'required',
         ]);
 
         $file = $request->file('image');
@@ -40,6 +41,7 @@ class BannersController extends Controller
             'paragraph' => $request->paragraph,
             'sub_title' => $request->sub_title,
             'category_id' => $request->category_id,
+            'type' => $request->type,
         ]);
 
         return redirect()->back()->with('success', 'File uploaded successfully.');
@@ -77,6 +79,7 @@ class BannersController extends Controller
         }
         $banner->sub_title = $request->sub_title;
         $banner->title = $request->title;
+        $banner->type = $request->type;
         $banner->paragraph = $request->paragraph;
         $banner->category_id = $request->category_id;
         $banner->save();

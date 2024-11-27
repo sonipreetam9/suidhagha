@@ -12,37 +12,64 @@
 </div> --}}
 <main class="main__content_wrapper">
     <!-- Start slider section -->
-<section class="hero__slider--section">
-    <div class="hero__slider--inner hero__slider--activation swiper">
-        <div class="hero__slider--wrapper swiper-wrapper">
-            @foreach ($banner as $banners)
-            <div class="swiper-slide">
-                <a href="{{ route('shop.page.find.categorie', ['catName' => $banners->category->url_link]) }}">
-                    <div class="hero__slider--items home1__slider--bg"
-                         style="background: url('{{ asset('uploads/Main Bannner/' . $banners->image) }}');
-                                background-repeat: no-repeat;
-                                height: 100vh;
-                                width: 100vw;
-                                background-position: center center;
-                                background-size: cover;">
-                        <div class="container-fluid">
-                            <div class="hero__slider--items__inner">
-                                <div class="row row-cols-1">
-                                    <div class="col">
-                                        <!-- Add content here if needed -->
+    <section class="hero__slider--section">
+        <div class="hero__slider--inner hero__slider--activation swiper">
+            <div class="hero__slider--wrapper swiper-wrapper">
+                <!-- Desktop Banners -->
+                @foreach ($desktopBanners as $banner)
+                <div class="swiper-slide desktop-banner">
+                    <a href="{{ route('shop.page.find.categorie', ['catName' => $banner->category->url_link]) }}">
+                        <div class="hero__slider--items home1__slider--bg"
+                             style="background: url('{{ asset('uploads/Main Bannner/' . $banner->image) }}');
+                                    background-repeat: no-repeat;
+                                    height: 100vh;
+                                    width: 100vw;
+                                    background-position: center center;
+                                    background-size: cover;">
+                            <div class="container-fluid">
+                                <div class="hero__slider--items__inner">
+                                    <div class="row row-cols-1">
+                                        <div class="col">
+                                            <!-- Add content here if needed -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+                @endforeach
+
+                <!-- Mobile Banners -->
+                @foreach ($mobileBanners as $banner)
+                <div class="swiper-slide mobile-banner">
+                    <a href="{{ route('shop.page.find.categorie', ['catName' => $banner->category->url_link]) }}">
+                        <div class="hero__slider--items home1__slider--bg"
+                             style="background: url('{{ asset('uploads/Main Bannner/' . $banner->image) }}');
+                                    background-repeat: no-repeat;
+                                    height: 100vh;
+                                    width: 100vw;
+                                    background-position: center center;
+                                    background-size: cover;">
+                            <div class="container-fluid">
+                                <div class="hero__slider--items__inner">
+                                    <div class="row row-cols-1">
+                                        <div class="col">
+                                            <!-- Add content here if needed -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
             </div>
-            @endforeach
+            <div class="swiper__nav--btn swiper-button-next"></div>
+            <div class="swiper__nav--btn swiper-button-prev"></div>
         </div>
-        <div class="swiper__nav--btn swiper-button-next"></div>
-        <div class="swiper__nav--btn swiper-button-prev"></div>
-    </div>
-</section>
+    </section>
+
 <!-- End slider section -->
 
 <!-- Responsive styles -->
@@ -66,8 +93,55 @@
             height: 250px !important;
         }
     }
-</style>
+    /* Default: Show only desktop banners */
+.mobile-banner {
+    display: none;
+}
 
+/* Tablet adjustments */
+@media (max-width: 991px) {
+    .desktop-banner {
+        display: none;
+    }
+    .mobile-banner {
+        display: block;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    .desktop-banner {
+        display: none;
+    }
+    .mobile-banner {
+        display: block;
+    }
+}
+
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const desktopBanners = document.querySelectorAll(".desktop-banner");
+    const mobileBanners = document.querySelectorAll(".mobile-banner");
+
+    function toggleBanners() {
+        if (window.innerWidth <= 991) {
+            // Show mobile banners, hide desktop banners
+            desktopBanners.forEach(banner => banner.style.display = "none");
+            mobileBanners.forEach(banner => banner.style.display = "block");
+        } else {
+            // Show desktop banners, hide mobile banners
+            desktopBanners.forEach(banner => banner.style.display = "block");
+            mobileBanners.forEach(banner => banner.style.display = "none");
+        }
+    }
+
+    // Run on page load and on resize
+    toggleBanners();
+    window.addEventListener("resize", toggleBanners);
+});
+
+</script>
 
 
     <!-- Start blog section -->

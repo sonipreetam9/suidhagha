@@ -25,7 +25,7 @@ class HomeController extends Controller
 {
     public function home_page()
     {
-        $var="home";
+        $var = "home";
         $sections = SectionModel::with('products')->get();
         $item = ProductModel::with('category')->with('subcategory')->orderBy("id", "desc")->get();
         $count = 0;
@@ -33,19 +33,21 @@ class HomeController extends Controller
             $blog = BlogModel::orderBy("id", "desc")->paginate(4);
             $newbrand = BrandModel::orderBy("id", "desc")->paginate(10);
             $reviews = ReviewModel::all();
-            $banner = HomeMainBannerModel::with('category')->get();
+            $desktopBanners = HomeMainBannerModel::where('type', 'desktop')->get();
+            $mobileBanners = HomeMainBannerModel::where('type', 'mobile')->get();
             $midbanners = HomeMiddleBannerModel::with('category')->latest()->first();
             $lastbanners = HomeLastBannerModel::with('category')->latest()->first();
             $categories = CategorieModel::orderBy("seq", "asc")->get();
 
-            $data = compact("blog", "item", "newbrand", "reviews", "categories", "sections", "count", "banner", "midbanners", "lastbanners","var");
-
+            $data = compact("blog", "item", "newbrand", "reviews", "categories", "sections", "count", "midbanners", "lastbanners", "var","desktopBanners","mobileBanners");
             return view("index", $data)->with($data);
         } else {
+            $desktopBanners = HomeMainBannerModel::where('type', 'desktop')->get();
+            $mobileBanners = HomeMainBannerModel::where('type', 'mobile')->get();
             $midbanners = HomeMiddleBannerModel::latest()->first();
             $lastbanners = HomeLastBannerModel::latest()->first();
             $categories = CategorieModel::orderBy("seq", "asc")->get();
-            return view("index", compact('item', 'categories', 'lastbanners', 'midbanners',"var"));
+            return view("index", compact('item', 'categories', 'lastbanners', 'midbanners', "var","desktopBanners","mobileBanners"));
         }
     }
 
