@@ -30,7 +30,7 @@ $totalPrice=0;
 <main class="main__content_wrapper">
 
     <!-- Start breadcrumb section -->
-    <section class="breadcrumb__section breadcrumb__bg">
+    {{-- <section class="breadcrumb__section breadcrumb__bg">
         <div class="container">
             <div class="row row-cols-1">
                 <div class="col">
@@ -46,7 +46,7 @@ $totalPrice=0;
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- End breadcrumb section -->
 
     <!-- cart section start -->

@@ -57,7 +57,7 @@
     <!-- Add more sections as needed -->
 
     <h3>Questions or Concerns:</h3>
-    <p>If you have any questions or concerns about our privacy policy, please don't hesitate to contact us at {{ $comp_mobile }}.</p>
+    <p>If you have any questions or concerns about our privacy policy, please don't hesitate to contact us at {{ $comp_email }}.</p>
 
     <h3>Policy Updates:</h3>
     <p>We reserve the right to update or modify this privacy policy at any time without prior notice. Please review this policy periodically for any changes.</p>

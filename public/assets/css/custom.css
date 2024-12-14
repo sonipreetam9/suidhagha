@@ -41,3 +41,113 @@
 .cr-cart-notify a:hover {
     color: #000;
 }
+a{
+    color: var(--text-gray-color) !important;
+    font-size: 15px !important;
+}
+.testimonial__items--title{
+    color: var(--text-gray-color) !important;
+    font-size: 15px !important;
+
+}
+.header__menu--link{
+    color: white !important;
+    font-size: 15px !important;
+
+}
+.footer__widget--title{
+    color: var(--text-gray-color) !important;
+    font-size: 15px !important;
+
+}
+.footer__widget--menu__list{
+    color: var(--text-gray-color) !important;
+    font-size: 15px !important;
+
+}
+.quickview__social--title{
+    color: var(--text-gray-color) !important;
+    font-size: 15px !important;
+
+}
+.widget__title {
+    color: var(--text-gray-color) !important;
+    font-size: 15px !important;
+
+}
+.widget__form--check__label{
+    color: var(--text-gray-color) !important;
+    font-size: 15px !important;
+
+}
+.price__filter--label{
+    color: var(--text-gray-color) !important;
+    font-size: 15px !important;
+
+}
+.price__filter--input__field{
+    color: var(--text-gray-color) !important;
+    font-size: 15px !important;
+
+}
+.price__filter--currency{
+    color: var(--text-gray-color) !important;
+    font-size: 15px !important;
+
+}
+.product__details--info__title{
+    color: var(--text-gray-color) !important;
+    font-size: 25px !important;
+
+}
+.p{
+    color: var(--text-gray-color) !important;
+    font-size: 25px !important;
+
+}
+.section__heading--maintitle{
+    font-size:22px !important;
+}
+.product__variant--title
+{
+    color: var(--text-gray-color) !important;
+
+}
+.variant__size--value
+{
+    color: var(--text-gray-color) !important;
+
+}
+span
+{
+    color: var(--text-gray-color) !important;
+
+}
+.contact__form--title
+{
+    color: var(--text-gray-color) !important;
+
+}
+.contact__form--label
+{
+    color: var(--text-gray-color) !important;
+
+}
+.about__content--maintitle
+{
+    color: var(--text-gray-color) !important;
+
+}
+.header__search--button__svg
+{
+    color:white !important;
+
+}
+.header__account--btn
+{
+    color:white !important;
+
+}
+.contact__info--content__desc a{
+    color: white !important;
+}

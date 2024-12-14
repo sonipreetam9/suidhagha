@@ -433,7 +433,7 @@
                                 <a class="header__account--btn" href="{{ route('cart.page') }}" data-offcanvas id="cartLink">
                                     <img src="{{ asset('assets/img/icon/icons8-shopping-bag-64.png') }}" alt="" width="26">
                                     <span class="header__account--btn__text"></span>
-                                    <span class="items__count" id="cartBadge"></span>
+                                    {{-- <span class="items__count" id="cartBadge"></span> --}}
                                 </a>
                             </li>
 
@@ -529,7 +529,7 @@
                                     id="cartLink">
                                     <img src="{{ asset('assets/img/icon/icons8-shopping-bag-64.png') }}" alt="" width="26">
 
-                                    <span class="items__count style2" id="mobcartBadge"></span>
+                                    {{-- <span class="items__count style2" id="mobcartBadge"></span> --}}
                                 </a>
                             </li>
                         </ul>
@@ -662,7 +662,7 @@
         <!-- End Offcanvas header menu -->
 
         <!-- Start Offcanvas stikcy toolbar -->
-        <div class="offcanvas__stikcy--toolbar">
+        {{-- <div class="offcanvas__stikcy--toolbar">
             <ul class="d-flex justify-content-between">
                 <li class="offcanvas__stikcy--toolbar__list">
                     <a class="offcanvas__stikcy--toolbar__btn" href="{{ route('home.page') }}">
@@ -715,7 +715,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div> --}}
         <!-- End Offcanvas stikcy toolbar -->
 
 

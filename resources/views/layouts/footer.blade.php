@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="main__footer d-flex justify-content-around ">
             <div class="footer__widget col-md-3">
-                <h2 class="footer__widget--title text-black h3">Categories
+                <h2 class="footer__widget--title  h3">Categories
                     <button class="footer__widget--button" aria-label="footer widget button">
                         <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg"
                             width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
@@ -16,7 +16,7 @@
                     @foreach ($categories as $categorie )
                     @if($categorie->in_navbar === "Yes")
 
-                    <li class="footer__widget--menu__list text-black"><a class="footer__widget--menu__text"
+                    <li class="footer__widget--menu__list "><a class="footer__widget--menu__text"
                             href="{{ route('shop.page.find.categorie', ['catName' => $categorie->url_link ]) }}">{{
                             $categorie->name }}</a></li>
                     @endif
@@ -28,7 +28,7 @@
                 </ul>
             </div>
             <div class="footer__widget col-md-3">
-                <h2 class="footer__widget--title text-black h3">My Account
+                <h2 class="footer__widget--title  h3">My Account
                     <button class="footer__widget--button" aria-label="footer widget button">
                         <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg"
                             width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
@@ -55,7 +55,7 @@
                 </ul>
             </div>
             <div class="footer__widget col-md-3">
-                <h2 class="footer__widget--title text-black h3">Links
+                <h2 class="footer__widget--title  h3">Links
                     <button class="footer__widget--button" aria-label="footer widget button">
                         <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg"
                             width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
@@ -83,7 +83,7 @@
 
 
             <div class="footer__widget col-md-3">
-                <h2 class="footer__widget--title text-black h3">Contact Us
+                <h2 class="footer__widget--title  h3">Contact Us
                     <button class="footer__widget--button" aria-label="footer widget button">
                         <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg"
                             width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
@@ -93,12 +93,12 @@
                     </button>
                 </h2>
                 <ul class="footer__widget--menu footer__widget--inner">
-                    <li class="footer__widget--menu__list text-black">Address : <a class="footer__widget--menu__text"
+                    <li class="footer__widget--menu__list ">Address : <a class="footer__widget--menu__text"
                             href="">{{ $comp_address }}</a></li>
-                    <li class="footer__widget--menu__list text-black">Email : <a class="footer__widget--menu__text"
+                    <li class="footer__widget--menu__list ">Email : <a class="footer__widget--menu__text"
                             href="mailto:{{ $comp_email }}">{{ $comp_email }}</a></li>
-                    <li class="footer__widget--menu__list text-black">Phone : <a class="footer__widget--menu__text"
-                            href="tel:{{ $comp_mobile }}">{{ $comp_mobile }}</a></li>
+                    {{-- <li class="footer__widget--menu__list ">Phone : <a class="footer__widget--menu__text"
+                            href="tel:{{ $comp_mobile }}">{{ $comp_mobile }}</a></li> --}}
 
                     <div class="quickview__social d-flex align-items-center mb-15 mt-4">
                         <label class="quickview__social--title">Social</label>
@@ -147,7 +147,7 @@
 
         </div>
         <div class="footer__bottom d-flex justify-content-between align-items-center">
-            <p class="copyright__content text-black m-0">Copyright © 2024 <a class="copyright__content--link"
+            <p class="copyright__content  m-0">Copyright © 2024 <a class="copyright__content--link"
                     href="{{ route('home.page') }}">{{ $comp_name }}</a> . All Rights Reserved.Design By {{ $comp_name
                 }}</p>
         </div>

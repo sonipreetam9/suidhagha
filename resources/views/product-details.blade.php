@@ -276,9 +276,10 @@
                                 </div>
                             </div>
                             <p>*Retrun Policy </p>
-                            Your Satisfaction is our top Priority. If you'e not completely Satisfied with the Product.
-                            We offer a hassie Free no Questions askek 15 Days Return and Refund
-                            For more details Please read <a href="{{ route('returns.refunds.page') }}">Return Policy</a>
+                            <p>Your Satisfaction is our top Priority. If you'e not completely Satisfied with the Product.
+                                We offer a hassie Free no Questions askek 15 Days Return and Refund
+                                For more details Please read <span><a href="{{ route('returns.refunds.page') }}">Return Policy</a></span></p>
+
                         </form>
                     </div>
                 </div>

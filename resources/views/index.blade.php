@@ -506,7 +506,7 @@
     <!-- End testimonial section -->
 
     <!-- Start banner section -->
-    <section class="banner__section section--padding pt-0">
+    <section class="banner__section p-0">
         <div class="container-fluid">
             <div class="row row-cols-1">
                 <div class="col">
