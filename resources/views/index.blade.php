@@ -76,21 +76,21 @@
 <style>
     /* Default styles */
     .home1__slider--bg {
-        height: 100vh;
+        height: 1000px;
         background-size: cover;
     }
 
     /* Tablet adjustments */
     @media (max-width: 991px) {
         .home1__slider--bg {
-            height: 250px !important;
+
         }
     }
 
     /* Mobile adjustments */
     @media (max-width: 767px) {
         .home1__slider--bg {
-            height: 250px !important;
+
         }
     }
     /* Default: Show only desktop banners */
@@ -145,7 +145,7 @@
 
 
     <!-- Start blog section -->
-    <section class="blog__section section--padding p-5">
+    <section class="blog__section section--padding ">
         <div class="container-fluid">
             <div class="blog__section--inner blog__swiper--activation swiper">
                 <div class="swiper-wrapper">
@@ -212,7 +212,7 @@
     <!-- End banner section -->
 
     <!-- Start product section -->
-    <section class="product__section p-4">
+    <section class="product__section ">
         <div class="container-fluid">
             <div class="section__heading text-center mb-35">
                 <h2 class="section__heading--maintitle">New Products</h2>
@@ -255,7 +255,7 @@
                                             <span class="old__price">₹{{ $items->price }}</span>
                                         </div>
 
-                                        <ul class="product__items--action d-flex">
+                                        {{-- <ul class="product__items--action d-flex">
                                             <li class="product__items--action__list">
                                                 @if (Auth::user())
                                                 <a class="product__items--action__btn addToCartBtn"
@@ -310,25 +310,9 @@
                                                 @endif
                                             </li>
 
-                                            {{-- <li class="product__items--action__list">
-                                                <a class="product__items--action__btn" data-open="modal1"
-                                                    href="javascript:void(0)">
-                                                    <svg class="product__items--action__btn--svg"
-                                                        xmlns="http://www.w3.org/2000/svg" width="25.51" height="23.443"
-                                                        viewBox="0 0 512 512">
-                                                        <path
-                                                            d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z"
-                                                            fill="none" stroke="currentColor" stroke-linecap="round"
-                                                            stroke-linejoin="round" stroke-width="32" />
-                                                        <circle cx="256" cy="256" r="80" fill="none"
-                                                            stroke="currentColor" stroke-miterlimit="10"
-                                                            stroke-width="32" />
-                                                    </svg>
-                                                    <span class="visually-hidden">Quick View</span>
-                                                </a>
-                                            </li> --}}
 
-                                        </ul>
+
+                                        </ul> --}}
                                     </div>
                                 </div>
                             </div>
@@ -343,41 +327,33 @@
     <!-- End product section -->
 
     <!-- Start deals banner section -->
-    <a href="{{ route('shop.page.find.categorie', ['catName' => $midbanners->category->url_link]) }}"
-        style="width: 100%">
-        <section class="deals__banner--section  p-4">
-            <div class="container-fluid">
+<section class="deals__banner--section mt-5 mb-5">
+    <div class="container-fluid">
+                <a href="{{ route('shop.page.find.categorie', ['catName' => $midbanners->category->url_link]) }}" style="width: 100%;">
+                    <img src="{{ asset('uploads/Middle Banner/' . $midbanners->image) }}"
+                         alt="Middle Banner"
+                         class=""
+                         style="width: 100%">
+                </a>
+    </div>
+</section>
+<!-- End deals banner section -->
 
-                <div class="deals__banner--inner banner__bg" style="background: url('{{ asset('uploads/Middle Banner/' . $midbanners->image) }}');  background-repeat: no-repeat;
-
-                    background-position: center center;
-                    background-size: contain;">
-
-
-                    <div class="row row-cols-1 align-items-center">
-                        <div class="col" style="height: 500px">
-                            <div class="deals__banner--content position__relative">
-                                {{-- content --}}
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-    </a>
-    <!-- End deals banner section -->
 <style>
     .bg-yellow{
         background-color: rgb(235, 178, 94);
     }
+    @media (max-width: 768px) {
+    .deals__banner--section img {
+        height: auto;
+    }
+}
+
 </style>
 
     <!-- Start product section -->
     @foreach ($sections as $index=> $currentSection)
-    <section class="product__section p-4 @if($index % 2 === 0) bg-yellow  @endif">
+    <section class="product__section ">
         <div class="container-fluid">
             @if (is_object($currentSection))
             <div class="section__heading text-center mb-50">
@@ -387,7 +363,7 @@
 
                 <div class="swiper-wrapper">
                     @foreach ($currentSection->products->slice(0, 4) as $product)
-                    <div class="swiper-slide">
+                    <div class="swiper-slide pb-5">
                         <div class="product__items ">
                             <div class="product__items--thumbnail">
                                 <a class="produSct__items--link"
@@ -413,34 +389,7 @@
                                     <span class="old__price">₹{{ $product->price }}</span>
                                 </div>
 
-                                <ul class="product__items--action d-flex">
-                                    <li class="product__items--action__list">
-                                        <a class="product__items--action__btn add__to--cart"
-                                            href="{{ route('home.page') }}">
-                                            <svg class="product__items--action__btn--svg"
-                                                xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443"
-                                                viewBox="0 0 14.706 13.534">
-                                                <g transform="translate(0 0)">
-                                                    <g>
-                                                        <path data-name="Path 16787"
-                                                            d="M4.738,472.271h7.814a.434.434,0,0,0,.414-.328l1.723-6.316a.466.466,0,0,0-.071-.4.424.424,0,0,0-.344-.179H3.745L3.437,463.6a.435.435,0,0,0-.421-.353H.431a.451.451,0,0,0,0,.9h2.24c.054.257,1.474,6.946,1.555,7.33a1.36,1.36,0,0,0-.779,1.242,1.326,1.326,0,0,0,1.293,1.354h7.812a.452.452,0,0,0,0-.9H4.74a.451.451,0,0,1,0-.9Zm8.966-6.317-1.477,5.414H5.085l-1.149-5.414Z"
-                                                            transform="translate(0 -463.248)" fill="currentColor">
-                                                        </path>
-                                                        <path data-name="Path 16788"
-                                                            d="M5.5,478.8a1.294,1.294,0,1,0,1.293-1.353A1.325,1.325,0,0,0,5.5,478.8Zm1.293-.451a.452.452,0,1,1-.431.451A.442.442,0,0,1,6.793,478.352Z"
-                                                            transform="translate(-1.191 -466.622)" fill="currentColor">
-                                                        </path>
-                                                        <path data-name="Path 16789"
-                                                            d="M13.273,478.8a1.294,1.294,0,1,0,1.293-1.353A1.325,1.325,0,0,0,13.273,478.8Zm1.293-.451a.452.452,0,1,1-.431.451A.442.442,0,0,1,14.566,478.352Z"
-                                                            transform="translate(-2.875 -466.622)" fill="currentColor">
-                                                        </path>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                            <span class="add__to--cart__text"> + Add to cart</span>
-                                        </a>
-                                    </li>
-                                </ul>
+
                             </div>
                         </div>
                     </div>
@@ -679,7 +628,7 @@
     </section> --}}
     <!-- End blog section -->
 <!-- Start blog section -->
-<section class="blog__section section--padding p-5">
+<section class="blog__section section--padding ">
     <div class="container-fluid">
         <div class="blog__section--inner blog__swiper--activation swiper">
             <div class="swiper-wrapper">

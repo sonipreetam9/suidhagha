@@ -96,7 +96,6 @@ $totalPrice=0;
                                                                 href="{{ route('product.detail.page',['id'=>$cart->product->id]) }}z">{{
                                                                 $cart->product->name }}</a></h4>
                                                         <span class="cart__content--variant">COLOR: Blue</span>
-                                                        <span class="cart__content--variant">WEIGHT: 2 Kg</span>
                                                     </div>
                                                 </div>
                                             </td>

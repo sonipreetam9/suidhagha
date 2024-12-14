@@ -24,9 +24,9 @@ class AppServiceProvider extends ServiceProvider
         $comp_name="Sui-Dhagha";
         $comp_mobile="+91 99999-90900";
         $comp_mobile1="+91 90900-99999";
-        $comp_email="suidhaga@gmail.com";
+        $comp_email="Support@buysuidhagha.com";
         $comp_email1="newsuidhaga@gmail.com";
-        $comp_address="AHMEDABAD GUJARAT 382213";
+        $comp_address="Ahmedabad Gujarat 382213";
         view()->share('comp_name',$comp_name);
         view()->share('comp_mobile', $comp_mobile);
         view()->share('comp_mobile1', $comp_mobile1);

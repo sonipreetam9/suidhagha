@@ -2720,7 +2720,7 @@ body.overlay__active::before {
     }
 }
 .predictive__search--box {
-    background: var(--white-color);
+    /* background: var(--white-color); */
     -webkit-box-shadow: 0 -4px 27px rgba(62, 70, 120, 0.16);
     box-shadow: 0 -4px 27px rgba(62, 70, 120, 0.16);
     position: relative;
@@ -2743,7 +2743,7 @@ body.overlay__active::before {
     transform: translateY(0);
 }
 .predictive__search--box__inner {
-    padding: 20px 16px;
+    padding: 10px 10px;
     text-align: center;
 }
 @media only screen and (min-width: 576px) {

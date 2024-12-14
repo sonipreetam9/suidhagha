@@ -237,7 +237,7 @@
                 left: 0;
                 width: 100%;
                 z-index: 10;
-                background-color: rgba(0, 0, 0, 0.10);
+                background-color: rgba(0, 0, 0, 0);
 
             }
 
@@ -431,13 +431,12 @@
                             </li>
                             <li class="header__account--items">
                                 <a class="header__account--btn" href="{{ route('cart.page') }}" data-offcanvas id="cartLink">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2C10.35 2 9 3.35 9 5V6H5.5C4.12 6 3 7.12 3 8.5V19.5C3 20.88 4.12 22 5.5 22H18.5C19.88 22 21 20.88 21 19.5V8.5C21 7.12 19.88 6 18.5 6H15V5C15 3.35 13.65 2 12 2ZM10 6V5C10 4.45 10.45 4 11 4C11.55 4 12 4.45 12 5V6H10ZM13 6V5C13 4.45 13.45 4 14 4C14.55 4 15 4.45 15 5V6H13ZM5.5 8H18.5C18.78 8 19 8.22 19 8.5V19.5C19 19.78 18.78 20 18.5 20H5.5C5.22 20 5 19.78 5 19.5V8.5C5 8.22 5.22 8 5.5 8Z" />
-                                    </svg>
+                                    <img src="{{ asset('assets/img/icon/icons8-shopping-bag-64.png') }}" alt="" width="26">
                                     <span class="header__account--btn__text"></span>
                                     <span class="items__count" id="cartBadge"></span>
                                 </a>
                             </li>
+
 
 
                         </ul>
@@ -528,9 +527,8 @@
                             <li class="header__account--items header__account2--items">
                                 <a class="header__account--btn " href="{{ route('cart.page') }}" data-offcanvas
                                     id="cartLink">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2C10.35 2 9 3.35 9 5V6H5.5C4.12 6 3 7.12 3 8.5V19.5C3 20.88 4.12 22 5.5 22H18.5C19.88 22 21 20.88 21 19.5V8.5C21 7.12 19.88 6 18.5 6H15V5C15 3.35 13.65 2 12 2ZM10 6V5C10 4.45 10.45 4 11 4C11.55 4 12 4.45 12 5V6H10ZM13 6V5C13 4.45 13.45 4 14 4C14.55 4 15 4.45 15 5V6H13ZM5.5 8H18.5C18.78 8 19 8.22 19 8.5V19.5C19 19.78 18.78 20 18.5 20H5.5C5.22 20 5 19.78 5 19.5V8.5C5 8.22 5.22 8 5.5 8Z" />
-                                    </svg>
+                                    <img src="{{ asset('assets/img/icon/icons8-shopping-bag-64.png') }}" alt="" width="26">
+
                                     <span class="items__count style2" id="mobcartBadge"></span>
                                 </a>
                             </li>
@@ -709,9 +707,8 @@
                 <li class="offcanvas__stikcy--toolbar__list">
                     <a class="offcanvas__stikcy--toolbar__btn " href="{{ route('cart.page') }}" data-offcanvas>
                         <span class="offcanvas__stikcy--toolbar__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2C10.35 2 9 3.35 9 5V6H5.5C4.12 6 3 7.12 3 8.5V19.5C3 20.88 4.12 22 5.5 22H18.5C19.88 22 21 20.88 21 19.5V8.5C21 7.12 19.88 6 18.5 6H15V5C15 3.35 13.65 2 12 2ZM10 6V5C10 4.45 10.45 4 11 4C11.55 4 12 4.45 12 5V6H10ZM13 6V5C13 4.45 13.45 4 14 4C14.55 4 15 4.45 15 5V6H13ZM5.5 8H18.5C18.78 8 19 8.22 19 8.5V19.5C19 19.78 18.78 20 18.5 20H5.5C5.22 20 5 19.78 5 19.5V8.5C5 8.22 5.22 8 5.5 8Z" />
-                            </svg>
+                            <img src="{{ asset('assets/img/icon/icons8-shopping-bag-64.png') }}" alt="" width="25">
+
                         </span>
                         <span class="offcanvas__stikcy--toolbar__label">Cart</span>
                         <span class="items__count cart-badge" id="mobcartBadge2"></span>
@@ -725,7 +722,6 @@
         <!-- Start serch box area -->
         <div class="predictive__search--box ">
             <div class="predictive__search--box__inner">
-                <h2 class="predictive__search--title">Search Products</h2>
                 <form class="predictive__search--form" action="{{ route('search.products.post') }}" method="POST">
                     @csrf
                     <label>
@@ -741,13 +737,13 @@
                         </svg> </button>
                 </form>
             </div>
-            <button class="predictive__search--close__btn" aria-label="search close button" data-offcanvas>
+            {{-- <button class="predictive__search--close__btn" aria-label="search close button" data-offcanvas>
                 <svg class="predictive__search--close__icon" xmlns="http://www.w3.org/2000/svg" width="40.51"
                     height="30.443" viewBox="0 0 512 512">
                     <path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                         stroke-width="32" d="M368 368L144 144M368 144L144 368" />
                 </svg>
-            </button>
+            </button> --}}
         </div>
         <!-- End serch box area -->
 
